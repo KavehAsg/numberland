@@ -9,6 +9,7 @@ import {
   gql,
 } from "@apollo/client";
 import "./index.css";
+import HomePage from "./Routes/HomePage.jsx";
 
 const client = new ApolloClient({
   uri: "https://eu-central-1-shared-euc1-02.cdn.hygraph.com/content/cly1o521a058q07w4wsgza84t/master",
@@ -18,7 +19,13 @@ const client = new ApolloClient({
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <App />, // Main Layout
+    children : [
+      {
+        path: '/' ,
+        element : <HomePage />
+      }
+    ]
   },
 ]);
 
