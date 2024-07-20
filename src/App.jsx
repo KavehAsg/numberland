@@ -1,15 +1,16 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
+import MegaMenu from "./Components/MegaMenu/MegaMenu";
 
 function App() {
   return (
-    <div>
+    <div className="">
       <Navbar />
-      <Main>
-        <Outlet />
-      </Main>
-      <Footer />
+      <main>
+        {/* <Outlet /> */}
+      </main>
+      {/* <Footer /> */}
     </div>
   );
 }
