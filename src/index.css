@@ -22,15 +22,47 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Numberland';
+  src: url('./Fonts/NumberLandFontRegular.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Numberland';
+  src: url('./Fonts/NumberLandFontMedium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Numberland';
+  src: url('./Fonts/NumberLandFontBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
 @layer components {
   .menu-Item {
     position: relative;
     padding: 0.5rem;
+    padding-top: 10px ;
   }
 
   .menu-Item:hover {
     @apply animate-menuHoverEffect;
   }
+
+  @media (max-width: 1024px) {
+    .menu-Item{
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+
+
 
   /* .arrow-top: */
   .arrow-top::before {
@@ -68,9 +100,9 @@
   }
 
   .menu-svg {
-    margin-top: 3px;
-    width: 10px;
+    width: 9px;
     opacity: 0.5;
+    margin-bottom: 2px;
     @apply group-hover:opacity-100;
   }
 
@@ -88,11 +120,11 @@
   .button-effect::after{
     content: "";
     width: 15%;
-    height: 150%;
+    height: 180%;
     @apply bg-secondary brightness-90 ;
     position: absolute;
     border-radius: 50%;
-    top: -5px;
+    top: -13px;
     right: -10px;
     z-index: -1;
     transition: all .5s;
@@ -100,6 +132,14 @@
 
   .button-effect:hover::after{
     width: 120%;
+  }
+
+  #bars-icon span {
+    width: 1rem;
+    height: 2px;
+    display: inline-block;
+    @apply bg-primary;
+    border-radius: 10px;
   }
 }
 
