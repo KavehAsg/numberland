@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 export default function ExpandableSubMenu({ expandableMenu }) {
   const { name, link, subMenu } = expandableMenu;
 
-  const [subMenuTitlePosition, setSubMenuTitlePosition] = useState({
+  const [expandableMenuPosition, setSubMenuTitlePosition] = useState({
     top: 0,
     right: 0,
   });
-  const [isSubmenuTitleHovered, setIsSubmenuTitleHovered] = useState(false);
+  const [isExpandableMenuTitleHovered, setIsSubmenuTitleHovered] =
+    useState(false);
   const [isExpandableMenuHovered, setIsExpandableMenuHovered] = useState(false);
+  const [isBurgerTitleClicked, setIsBurgerTitleClicked] = useState(false);
   const subMenuRefs = useRef();
 
   const handleSubmenuTitleMouseEnter = () => {
@@ -21,57 +23,74 @@ export default function ExpandableSubMenu({ expandableMenu }) {
     setIsSubmenuTitleHovered(true);
   };
 
-  const handleSubmenuTitleLeave = () => {
-    setIsSubmenuTitleHovered(false);
-  };
-
-  const handleExpandableSubmenuMouseEnter = () => {
-    setIsExpandableMenuHovered(true);
-  };
-
-  const handleExpandableSubmenuMouseLeave = () => {
-    setIsExpandableMenuHovered(false);
-  };
-
   return (
-    <li
-      ref={subMenuRefs}
-      className="group px-5"
-      onMouseEnter={ handleSubmenuTitleMouseEnter}
-      onMouseLeave={handleSubmenuTitleLeave}
-      key={link}
-    >
-      <div className="submenu-titles">
-        {name}
-        <Dropdown className="menu-svg" />
-      </div>
-
-      <ul
-        className={`absolute bg-white px-5 py-4 rounded-lg transition-all duration-200 shadow-custom arrow-right min-w-44 leading-7 ${
-          isExpandableMenuHovered || isSubmenuTitleHovered
-            ? "opacity-100"
-            : "opacity-0 pointer-events-none"
-        }`}
-        style={{
-          top: `${subMenuTitlePosition.top - 70}px`,
-          right: `${subMenuTitlePosition.right + 140}px`,
-        }}
-        onMouseEnter={handleExpandableSubmenuMouseEnter}
-        onMouseLeave={handleExpandableSubmenuMouseLeave}
+    <>
+      <li
+        ref={subMenuRefs}
+        className="group px-5 hidden lg:list-item"
+        onMouseEnter={handleSubmenuTitleMouseEnter}
+        onMouseLeave={() => setIsSubmenuTitleHovered(false)}
+        key={link}
       >
-        {subMenu.map((item) => {
-          return (
-            <li key={item.link}>
-              <Link
-                to={item.link}
-                className="hover:text-secondary transition-colors duration-100"
-              >
-                اکانت {item.name}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </li>
+        <div className="submenu-titles cursor-pointer">
+          {name}
+          <Dropdown className="menu-svg" />
+        </div>
+
+        <ul
+          className={`absolute flex flex-col gap-2 bg-white px-5 py-4 rounded-lg transition-all duration-200 shadow-custom arrow-right min-w-44 leading-7 ${
+            isExpandableMenuHovered || isExpandableMenuTitleHovered
+              ? "opacity-100"
+              : "opacity-0 pointer-events-none"
+          }`}
+          style={{
+            top: `${expandableMenuPosition.top - 80}px`,
+            right: `${expandableMenuPosition.right + 130}px`,
+          }}
+          onMouseEnter={() => setIsExpandableMenuHovered(true)}
+          onMouseLeave={() => setIsExpandableMenuHovered(false)}
+        >
+          {subMenu.map((item) => {
+            return (
+              <li key={item.link}>
+                <Link
+                  to={item.link}
+                  className="hover:text-secondary transition-colors duration-100"
+                >
+                  اکانت {item.name}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </li>
+
+      <li className="list-item lg:hidden menu-Item">
+        <div
+          className=" submenu-titles px-5"
+          onClick={() => setIsBurgerTitleClicked((prevState) => !prevState)}
+        >
+          {name}
+          <Dropdown className="menu-svg" />
+        </div>
+
+        <div
+          className={`w-full h-[0px] bg-base-100 rounded-md overflow-hidden transition-all duration-300
+                      ${isBurgerTitleClicked && "!h-fit py-2"} `}
+        >
+          <ul className="flex flex-col gap-3">
+            {subMenu.map((item) => {
+              return (
+                <li key={item.link}>
+                  <Link to={item.link} className="hover:text-secondary transition-colors duration-100 pr-10">
+                   اکانت {item.name}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </li>
+    </>
   );
 }

@@ -1,16 +1,19 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
-import MegaMenu from "./Components/MegaMenu/MegaMenu";
+import { useState } from "react";
 
 function App() {
+
   return (
-    <div className="">
+    <div
+      className={`font-numberland`}
+    >
       <Navbar />
       <main>
-        {/* <Outlet /> */}
+        <Outlet />
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

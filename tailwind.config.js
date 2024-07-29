@@ -6,14 +6,18 @@ export default {
   ],
   theme: {
     extend: {
+      spacing: {
+        '13' : '3.15rem'
+      }
+      ,
       fontFamily:{
-        yekan: ['Yekan' , 'sans-serif'],
-        iSans: ['ISans' , 'sans-serif'],
-        samim: ['Samim' , 'sans-serif'],
+        numberland: ['Numberland' , 'Samim' , 'ISans', 'Yekan','sans-serif'],
       }
       ,
       colors : {
-        "menuItem" : "#003f57"
+        "menuItem" : "#003f57" ,
+        "burgerBg" : "rgba(191, 189, 189 , 0.7)" ,
+        "slimBlack" : "rgba(0  ,0 ,0 , 0.7)"
       },
       keyframes: {
         menuHoverEffect: {
@@ -24,6 +28,7 @@ export default {
       }, 
       boxShadow: {
         custom: '0px 0px 3px 2px rgba(0, 152, 209, 0.05)',
+        burgerShadow: '0px 0px 400px 80px #EAEAEA',
       },
       animation: {
         menuHoverEffect: 'menuHoverEffect 0.4s ease-out',

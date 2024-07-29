@@ -58,6 +58,7 @@ export const navbarMenu = [
     {
         title: "وبلاگ",
         id: 2 ,
+        link : "/blog" ,
         options: [
 
         ]
@@ -83,6 +84,7 @@ export const navbarMenu = [
     {
         title: "نمایندگی فروش",
         id : 4 ,
+        link : "/sales-representative" ,
         options: [
 
         ]
