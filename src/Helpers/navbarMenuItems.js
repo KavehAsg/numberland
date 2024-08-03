@@ -78,7 +78,7 @@ export const navbarMenu = [
             {
                 name: "شماره مجازی چیست",
                 link: "/whatis",
-            }
+            } ,
         ]
     },
     {
@@ -102,7 +102,7 @@ export const navbarMenu = [
             }, {
                 name: "تماس با ما",
                 link: "contact-us",
-            }
+            } ,
         ]
     },
 ]

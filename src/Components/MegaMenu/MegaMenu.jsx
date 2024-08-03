@@ -4,6 +4,7 @@ import Dropdown from "../../assets/dropdown.svg?react";
 import CloseIcon from "../../assets/xmark.svg?react";
 import { Link } from "react-router-dom";
 import ExpandableSubMenu from "./ExpandableSubMenu";
+import XMark from "../../assets/xmark.svg?react";
 
 function menuReducer(state, action) {
   switch (action.type) {
@@ -98,7 +99,9 @@ export default function MegaMenu({ navbarMenu }) {
           if (menu.options.length === 0) {
             return (
               <li key={menu.id} className="cursor-pointer">
-                <Link to={menu.link} className="menu-Item inline-block">{menu.title}</Link>
+                <Link to={menu.link} className="menu-Item inline-block">
+                  {menu.title}
+                </Link>
               </li>
             );
           } else if (menu.options.length > 0) {
@@ -169,6 +172,7 @@ export default function MegaMenu({ navbarMenu }) {
       </ul>
       {/* End of Mega menu for desktop size */}
 
+      {/* Hamburger Menu Icon and its title */}
       <div
         className="hamburgerMenu flex lg:hidden h-full items-center gap-2 hover:pr-1 transition-all"
         onClick={() => dispatch({ type: "burgerMenu-open" })}
@@ -182,22 +186,26 @@ export default function MegaMenu({ navbarMenu }) {
           فهرست
         </span>
       </div>
+      {/* End Hamburger Menu Icon and its title */}
 
-      <div
+      {/* mobile size Mega menu - open from right */}
+      <div // Container
         className={`absolute overflow-hidden flex w-screen h-dvh max-h-lvh top-0 right-[-100%] 
         ${
           isBurgerMenuClicked && "right-[0%]"
         } transition-all duration-300 z-10`}
       >
-        <div
+        <div // Visible menu container
           className={`w-3/5 text-sm max-w-[320px] h-full overflow-y-scroll overflow-x-hidden bg-white z-20 pt-4 flex flex-col items-end ${
             isBurgerMenuClicked && "shadow-burgerShadow"
           }`}
         >
-          <CloseIcon
-            className={`w-7 mt-2 ml-4 ${!isBurgerMenuClicked && "rotate-90"} `}
+          <button
+            className="btn btn-circle border-none bg-inherit shadow-none hover:rotate-180 hover:bg-btnHoverBg duration-500"
             onClick={() => dispatch({ type: "burgerMenu-close" })}
-          />
+          >
+            <XMark />
+          </button>
 
           <ul className="w-full">
             {navbarMenu.map((menu) => {
@@ -264,11 +272,12 @@ export default function MegaMenu({ navbarMenu }) {
           </ul>
         </div>
 
-        <div
+        <div // filler backdrop - onclick => close the visible menu
           className={`w-2/5 h-full z-20 `}
           onClick={() => dispatch({ type: "burgerMenu-close" })}
         ></div>
       </div>
+      {/* End of mobile size Mega menu - open from right */}
     </>
   );
 }
