@@ -7,7 +7,7 @@ export default function ExpandableSubMenu({ expandableMenu }) {
 
   const [expandableMenuPosition, setSubMenuTitlePosition] = useState({
     top: 0,
-    right: 0,
+    left: 0,
   });
   const [isExpandableMenuTitleHovered, setIsSubmenuTitleHovered] =
     useState(false);
@@ -18,13 +18,14 @@ export default function ExpandableSubMenu({ expandableMenu }) {
   const handleSubmenuTitleMouseEnter = () => {
     const menuItem = subMenuRefs.current;
     const rect = menuItem.getBoundingClientRect();
-    const rightPosition = window.innerWidth - rect.right;
-    setSubMenuTitlePosition({ top: rect.bottom, right: rightPosition });
+    const leftPosition = rect.left;
+    setSubMenuTitlePosition({ top: rect.bottom, left: leftPosition });
     setIsSubmenuTitleHovered(true);
   };
 
   return (
     <>
+      {/* desktop size expandable menu - open a float submenu */}
       <li
         ref={subMenuRefs}
         className="group px-5 hidden lg:list-item"
@@ -45,7 +46,7 @@ export default function ExpandableSubMenu({ expandableMenu }) {
           }`}
           style={{
             top: `${expandableMenuPosition.top - 80}px`,
-            right: `${expandableMenuPosition.right + 130}px`,
+            left: `-170px`,
           }}
           onMouseEnter={() => setIsExpandableMenuHovered(true)}
           onMouseLeave={() => setIsExpandableMenuHovered(false)}
@@ -64,7 +65,9 @@ export default function ExpandableSubMenu({ expandableMenu }) {
           })}
         </ul>
       </li>
+      {/* End of desktop size expandable menu */}
 
+      {/* mobile size expandable menu - open a submenu below the item */}
       <li className="list-item lg:hidden menu-Item">
         <div
           className=" submenu-titles px-5"
@@ -82,8 +85,11 @@ export default function ExpandableSubMenu({ expandableMenu }) {
             {subMenu.map((item) => {
               return (
                 <li key={item.link}>
-                  <Link to={item.link} className="hover:text-secondary transition-colors duration-100 pr-10">
-                   اکانت {item.name}
+                  <Link
+                    to={item.link}
+                    className="hover:text-secondary transition-colors duration-100 pr-10"
+                  >
+                    اکانت {item.name}
                   </Link>
                 </li>
               );
@@ -91,6 +97,7 @@ export default function ExpandableSubMenu({ expandableMenu }) {
           </ul>
         </div>
       </li>
+      {/* End of mobile size expandable menu */}
     </>
   );
 }

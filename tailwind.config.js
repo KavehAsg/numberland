@@ -17,7 +17,9 @@ export default {
       colors : {
         "menuItem" : "#003f57" ,
         "burgerBg" : "rgba(191, 189, 189 , 0.7)" ,
-        "slimBlack" : "rgba(0  ,0 ,0 , 0.7)"
+        "slimBlack" : "rgba(0  ,0 ,0 , 0.7)",
+        "btnHoverBg" : "#FFECEC" ,
+        "btnBg" : "#F2F2F2" ,
       },
       keyframes: {
         menuHoverEffect: {
