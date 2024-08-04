@@ -1,5 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
+
 import Dropdown from "../../assets/dropdown.svg?react";
+
 import { Link } from "react-router-dom";
 
 export default function ExpandableSubMenu({ expandableMenu }) {

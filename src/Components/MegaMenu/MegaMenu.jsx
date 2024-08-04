@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect, useReducer } from "react";
+import React, { useRef, useReducer } from "react";
+
+import { Link } from "react-router-dom";
+
+import ExpandableSubMenu from "./ExpandableSubMenu";
 
 import Dropdown from "../../assets/dropdown.svg?react";
-import CloseIcon from "../../assets/xmark.svg?react";
-import { Link } from "react-router-dom";
-import ExpandableSubMenu from "./ExpandableSubMenu";
 import XMark from "../../assets/xmark.svg?react";
 
 function menuReducer(state, action) {

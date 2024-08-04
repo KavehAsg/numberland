@@ -35,6 +35,9 @@ export default {
       animation: {
         menuHoverEffect: 'menuHoverEffect 0.4s ease-out',
       },
+      gridTemplateColumns : {
+        footerLinks : 'repeat(auto-fill , minmax( 150px , 170px))'
+      }
     },
   },
   plugins: [
