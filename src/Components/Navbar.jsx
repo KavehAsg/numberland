@@ -1,8 +1,10 @@
 import React from "react";
-import LoginSvg from "../assets/Login.svg?react";
-import { navbarMenu } from "../Helpers/navbarMenuItems";
+
 import MegaMenu from "./MegaMenu/MegaMenu";
 import LoginModal from "./LoginModal";
+
+import { navbarMenu } from "../Helpers/navbarMenuItems";
+// Menu Items - array of objects
 
 export default function Navbar({}) {
   return (

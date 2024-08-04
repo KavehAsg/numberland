@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
+
 import KeySvg from "../assets/key.svg?react";
 import AvatarSvg from "../assets/avatar.svg?react";
 import EyeSvg from "../assets/eye.svg?react";
