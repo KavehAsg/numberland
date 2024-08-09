@@ -20,6 +20,7 @@ export default {
         "slimBlack" : "rgba(0  ,0 ,0 , 0.7)",
         "btnHoverBg" : "#FFECEC" ,
         "btnBg" : "#F2F2F2" ,
+        "wbMenuItem" : "#007DAD"
       },
       keyframes: {
         menuHoverEffect: {

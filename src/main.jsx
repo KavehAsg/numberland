@@ -1,17 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider , Navigate  } from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  gql,
 } from "@apollo/client";
 import "./index.css";
 import HomePage from "./Routes/HomePage.jsx";
+import Blogs from "./Routes/Weblog/Blogs.jsx";
+import BlogLayout from "./Routes/Weblog/BlogLayout.jsx";
+import Blog from "./Routes/Weblog/Blog.jsx";
+import { blogsLoader } from "./Loaders/blogsLoader.js";
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   uri: "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/cly1o521a058q07w4wsgza84t/master",
   cache: new InMemoryCache(),
 });
@@ -22,11 +25,30 @@ const router = createBrowserRouter([
     element: <App />, // Main Layout
     children: [
       {
+        path: '',
+        element: <Navigate to="/blog" />, // Redirect from root to /blog
+      },
+      {
         path: "/",
         element: <HomePage />,
       },
     ],
   },
+  {
+    path: "/blog" ,
+    element : <BlogLayout />, // Blog Layout which contains Navbar and Footer
+    children : [
+      {
+        path : "/blog",
+        element : <Blogs /> , // Main page of Blog which render blog cards
+        loader : blogsLoader
+      } ,
+      {
+        path: "/blog/:slug" ,
+        element : <Blog />
+      }
+    ]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
