@@ -3,42 +3,42 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Yekan';
-  src: url('./Fonts/Yekan.ttf') format('truetype');
+  font-family: "Yekan";
+  src: url("./Fonts/Yekan.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'ISans';
-  src: url('./Fonts/IranianSans.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Samim';
-  src: url('./Fonts/Samim.ttf') format('truetype');
+  font-family: "ISans";
+  src: url("./Fonts/IranianSans.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Numberland';
-  src: url('./Fonts/NumberLandFontRegular.woff') format('woff');
+  font-family: "Samim";
+  src: url("./Fonts/Samim.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Numberland";
+  src: url("./Fonts/NumberLandFontRegular.woff") format("woff");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Numberland';
-  src: url('./Fonts/NumberLandFontMedium.woff') format('woff');
+  font-family: "Numberland";
+  src: url("./Fonts/NumberLandFontMedium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Numberland';
-  src: url('./Fonts/NumberLandFontBold.woff') format('woff');
+  font-family: "Numberland";
+  src: url("./Fonts/NumberLandFontBold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
@@ -47,7 +47,7 @@
   .menu-Item {
     position: relative;
     padding: 0.5rem;
-    padding-top: 10px ;
+    padding-top: 10px;
   }
 
   .menu-Item:hover {
@@ -55,14 +55,24 @@
   }
 
   @media (max-width: 1024px) {
-    .menu-Item{
+    .menu-Item {
       display: flex;
       flex-direction: column;
       gap: 5px;
     }
   }
 
+  .underline-effect {
+    background-image: linear-gradient(to right, #ffb03b 0%, #eba132 100%);
+    background-size: 0 0.3em, 0 0.3em;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 400ms;
+  }
 
+  .underline-effect:hover {
+    background-size: 100% 0.2em, 0 0.2em;
+  }
 
   /* .arrow-top: */
   .arrow-top::before {
@@ -70,12 +80,12 @@
     width: 18px;
     height: 12px;
     position: absolute;
-    top:2px;
+    top: 2px;
     right: 15px;
     clip-path: polygon(50% 16%, 0% 100%, 100% 100%);
     background-color: inherit;
     box-shadow: 0px 0px 3px 2px rgba(0, 152, 209, 0.05);
-  } 
+  }
 
   .arrow-right::before {
     content: "";
@@ -85,10 +95,13 @@
     position: absolute;
     top: 20px;
     right: -11px;
-    background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(196, 181, 181, 0.404) 100%);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(196, 181, 181, 0.404) 100%
+    );
     clip-path: polygon(50% 16%, 0% 100%, 100% 100%);
-
   }
 
   .submenu-titles {
@@ -106,7 +119,7 @@
     @apply group-hover:opacity-100;
   }
 
-  .button-effect::before{
+  .button-effect::before {
     content: "";
     width: 20%;
     height: 100%;
@@ -115,11 +128,11 @@
     position: absolute;
     bottom: 0;
     z-index: -1;
-    transition:  all 0.6s;
+    transition: all 0.6s;
     border-radius: 100%;
   }
 
-  .button-effect::after{
+  .button-effect::after {
     content: "";
     width: 100%;
     height: 100%;
@@ -131,8 +144,8 @@
     background-color: inherit;
   }
 
-  .button-effect:hover::before{
-    transform: scale(20 ,1.5);
+  .button-effect:hover::before {
+    transform: scale(20, 1.5);
   }
 
   #bars-icon span {
@@ -147,5 +160,27 @@
 @layer utilities {
   .menu-transition {
     transition: right 0.5s, opacity 0.05s; /* Transition for top and right properties */
+  }
+
+  .menu-open {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .menu-close {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+}
+
+@layer base {
+  
+  body {
+    @apply  flex justify-center;
+  }
+  #root {
+    @apply w-full max-w-[1250px];
   }
 }

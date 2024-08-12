@@ -31,7 +31,7 @@ export default function WbNavbar() {
   return (
     <div className="w-full">
       <nav // Navbar for desktop size > 768px
-        className="hidden h-[160px] bg-base-100 px-10 pt-6 md:flex justify-between items-center flex-col lg:flex-row  border-b-2"
+        className="hidden h-[160px] bg-base-100 px-10 pt-6 pb-5 lg:pb-0 md:flex justify-between items-center flex-col lg:flex-row  border-b-2"
       >
         <Link to={"/"}>
           <NumberLandLogo className="w-[260px]" />
@@ -56,7 +56,7 @@ export default function WbNavbar() {
         </ul>
       </nav>
 
-      <nav // Navbar for desktop size > 768px
+      <nav // Navbar for mobile size < 768px
         className="md:hidden h-fit bg-base-100 p-4 px-6 lg:pt-4 flex justify-between items-center flex-row lg:flex-row  border-b-2"
       >
         <button
@@ -71,7 +71,7 @@ export default function WbNavbar() {
           )}
         </button>
         <ul
-          className={`absolute ${isMenuOpen ? "visible opacity-100" : "invisible opacity-0 pointer-events-none"} flex flex-col gap-4 bg-white text-wbMenuItem text-xl font-bold transition-opacity duration-150 z-10 p-8 rounded-xl shadow-custom`}
+          className={`absolute ${isMenuOpen ? "visible opacity-100" : "invisible opacity-0 pointer-events-none"} flex flex-col gap-4 bg-white text-wbMenuItem text-xl font-bold transition-opacity duration-150 z-30 p-8 rounded-xl shadow-custom`}
           style={{ top: menuPosition.top }}
         >
           {wbMenu.map((item) => (
@@ -94,7 +94,7 @@ export default function WbNavbar() {
         </button>
       </nav>
 
-      <header className="hidden md:block w-full ">
+      <header className="block sm:hidden lg:block w-full ">
           <img src={Banner} alt="banner" className="wfull"/>
       </header>
     </div>

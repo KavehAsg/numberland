@@ -11,8 +11,8 @@ import "./index.css";
 import HomePage from "./Routes/HomePage.jsx";
 import Blogs from "./Routes/Weblog/Blogs.jsx";
 import BlogLayout from "./Routes/Weblog/BlogLayout.jsx";
-import Blog from "./Routes/Weblog/Blog.jsx";
 import { blogsLoader } from "./Loaders/blogsLoader.js";
+import BlogPage from "./Routes/Weblog/BlogPage.jsx";
 
 export const client = new ApolloClient({
   uri: "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/cly1o521a058q07w4wsgza84t/master",
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       } ,
       {
         path: "/blog/:slug" ,
-        element : <Blog />
+        element : <BlogPage />
       }
     ]
   }
