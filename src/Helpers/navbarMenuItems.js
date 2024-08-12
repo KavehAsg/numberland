@@ -106,3 +106,33 @@ export const navbarMenu = [
         ]
     },
 ]
+
+
+export const wbMenu = [
+    {
+        title: "وبلاگ",
+        id: 1,
+        link : "/blog"
+    } ,
+    {
+        title: "هوش مصنوعی",
+        id: 2,
+        link : "/artificial-intelligence"
+    } ,
+    {
+        title: "اخبار تکنولوژی",
+        id: 3,
+        link : "/tech-news"
+    } ,
+    {
+        title: "بازی و گیمینگ",
+        id: 4,
+        link : "/gaming"
+    } ,
+    {
+        title: "مقالات آموزشی",
+        id: 5,
+        link : "/learning-blogs"
+    } ,
+]
+

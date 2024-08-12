@@ -20,6 +20,7 @@ export default {
         "slimBlack" : "rgba(0  ,0 ,0 , 0.7)",
         "btnHoverBg" : "#FFECEC" ,
         "btnBg" : "#F2F2F2" ,
+        "wbMenuItem" : "#007DAD"
       },
       keyframes: {
         menuHoverEffect: {
@@ -36,7 +37,8 @@ export default {
         menuHoverEffect: 'menuHoverEffect 0.4s ease-out',
       },
       gridTemplateColumns : {
-        footerLinks : 'repeat(auto-fill , minmax( 150px , 170px))'
+        footerLinks : 'repeat(auto-fill , minmax( 150px , 170px))' ,
+        blogCards : 'repeat(auto-fit , minmax( 350px ,1fr))' ,
       }
     },
   },
