@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 
 import { wbMenu } from "../../Helpers/navbarMenuItems";
 
@@ -11,7 +11,7 @@ import Banner from "../../assets/banner.webp"
 
 import { Link } from "react-router-dom";
 
-export default function WbNavbar() {
+function WbNavbar(props , ref) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const [menuPosition, setMenuPosition] = useState({
@@ -29,7 +29,7 @@ export default function WbNavbar() {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full" ref={ref}>
       <nav // Navbar for desktop size > 768px
         className="hidden h-[160px] bg-base-100 px-10 pt-6 pb-5 lg:pb-0 md:flex justify-between items-center flex-col lg:flex-row  border-b-2"
       >
@@ -100,3 +100,5 @@ export default function WbNavbar() {
     </div>
   );
 }
+
+export default forwardRef(WbNavbar);
