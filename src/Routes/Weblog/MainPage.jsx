@@ -2,7 +2,7 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import BlogCard from "../../Components/Weblog/BlogCard";
 
-export default function Blogs() {
+export default function MainPage() {
   const { blogs , pageInfo } = useLoaderData();
     return (
       <ul 

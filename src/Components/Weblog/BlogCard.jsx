@@ -36,7 +36,7 @@ export default function ({
           <Link
             key={category.id}
             to={category.slug}
-            className={`inline-block py-1 px-3 rounded-2xl text-white font-bold relative top-0 hover:-top-1 transition-all duration-300`}
+            className={`inline-block py-1 px-3 rounded-2xl text-white font-bold relative top-0 hover:-top-0.5 transition-all duration-300`}
             style={{
               background: `${category.color.hex}`,
             }}
