@@ -16,7 +16,6 @@ import MainPage from "./Routes/Weblog/MainPage.jsx";
 import BlogLayout from "./Routes/Weblog/BlogLayout.jsx";
 import BlogPage from "./Routes/Weblog/BlogPage.jsx";
 
-import { blogsLoader } from "./Loaders/blogsLoader.js";
 
 export const client = new ApolloClient({
   uri: "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/cly1o521a058q07w4wsgza84t/master",
@@ -45,7 +44,6 @@ const router = createBrowserRouter([
       {
         path : "/blog",
         element : <MainPage /> , // Main page of Blog which render blog cards
-        loader : blogsLoader
       } ,
       {
         path: "/blog/:slug" ,
