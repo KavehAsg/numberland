@@ -27,15 +27,14 @@ query BlogsQuery($after : String , $first : Int) {
         }
         title
         slug
-        postCategories {
-          ... on WbCategory {
+        wbCategory {
             id
             slug
             title
             color {
               hex
             }
-          }
+
         }
         preview
         id
@@ -60,8 +59,7 @@ export const GET_BLOG_BY_SLUG = gql`
       mainContent {
         html
       }
-      postCategories {
-        ... on WbCategory {
+      wbCategory {
           id
           color {
             hex
@@ -69,7 +67,6 @@ export const GET_BLOG_BY_SLUG = gql`
           title
           slug
         }
-      }
       publishDate
       slug
       title
@@ -86,8 +83,64 @@ export const GET_BLOG_BY_SLUG = gql`
 `
 
 export const GET_BLOGS_BY_CATEGORY = gql`
-query BlogsQuery($after : String , $first : Int , $category : String!) {
-  wbPostsConnection(after : $after , first : $first) {
+query BlogsQuery($after : String , $first : Int , $categorySlug : String!) {
+  wbPostsConnection(where: {wbCategory_some: {slug: $categorySlug }} , after : $after , first : $first) {
+    edges{
+      cursor
+      node {
+        publishDate
+        coverImage {
+          url
+        }
+        title
+        slug
+          wbCategory {
+            id
+            slug
+            title
+            color {
+              hex
+            } 
+         }
+        preview
+        id
+      }
+    }
+    pageInfo{
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+  }
+        wbCategory(where : {slug : $categorySlug}) {
+            icon{
+              url
+            }
+            title
+            description
+         }
+}
+  `
+
+export const GET_SIMILAR_BLOGS = gql`
+query MyQuery($category_slug : String , $first : Int) {
+  wbCategory(where: {slug: $category_slug}) {
+    wbPost(first: $first) {
+      coverImage {
+        url
+      }
+      slug
+      title
+      id
+    }
+  }
+}
+  `
+
+export const GET_BLOGS_BY_AUTHOR = gql`
+query BlogsQuery($after : String , $first : Int , $authorSlug : String) {
+  wbPostsConnection(where: {wbAuthor: {slug: $authorSlug}} , after : $after , first : $first ) {
     edges{
       cursor
       node {
@@ -118,19 +171,13 @@ query BlogsQuery($after : String , $first : Int , $category : String!) {
       endCursor
     }
   }
-}
-  `
 
-export const GET_SIMILAR_BLOGS = gql`
-query MyQuery($category_slug : String , $first : Int) {
-  wbCategory(where: {slug: $category_slug}) {
-    wbPost(first: $first) {
-      coverImage {
-        url
-      }
-      slug
-      title
-      id
+  wbAuthor(where: {slug: $authorSlug}) {
+    name
+    description
+    slug
+    profilePicture {
+      url
     }
   }
 }

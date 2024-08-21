@@ -32,7 +32,7 @@ function WbNavbar(props , ref) {
       <nav // Navbar for desktop size > 768px
         className="hidden h-[160px] bg-base-100 px-10 pt-6 pb-5 lg:pb-0 md:flex justify-between items-center flex-col lg:flex-row  border-b-2"
       >
-        <Link to={"/"}>
+        <Link to={"/blog"}>
           <NumberLandLogo className="w-[260px]" />
         </Link>
 
@@ -42,9 +42,9 @@ function WbNavbar(props , ref) {
               key={item.id}
               className="hover:text-[#eba132] transition-all duration-300"
             >
-              <a href={item.link} className="underline-effect">
+              <Link to={`/blog/category/${item.link}`} className="underline-effect">
                 {item.title}
-              </a>
+              </Link>
             </li>
           ))}
           <li className="mr-8 xl:mr-20">

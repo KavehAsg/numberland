@@ -15,6 +15,8 @@ import HomePage from "./Routes/HomePage.jsx";
 import MainPage from "./Routes/Weblog/MainPage.jsx";
 import BlogLayout from "./Routes/Weblog/BlogLayout.jsx";
 import BlogPage from "./Routes/Weblog/BlogPage.jsx";
+import AuthorPage from "./Routes/Weblog/AuthorPage.jsx";
+import CategoryPage from "./Routes/Weblog/CategoryPage.jsx";
 
 
 export const client = new ApolloClient({
@@ -27,10 +29,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />, // Main Layout
     children: [
-      // {
-      //   path: '',
-      //   element: <Navigate to="/blog" />, // Redirect from root to /blog
-      // },
       {
         path: "/",
         element: <HomePage />,
@@ -48,7 +46,19 @@ const router = createBrowserRouter([
       {
         path: "article/:slug" ,
         element : <BlogPage />
-      }
+      } ,
+      {
+        path: "author/:author" ,
+        element : <AuthorPage />
+      } ,
+      {
+        path: "category/:category" ,
+        element : <CategoryPage />
+      } ,
+      {
+        path: 'category',
+        element: <Navigate to="/blog" />, // Redirect from root to /blog
+      },
     ]
   }
 ]);

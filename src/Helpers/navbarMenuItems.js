@@ -112,27 +112,27 @@ export const wbMenu = [
     {
         title: "وبلاگ",
         id: 1,
-        link : "/blog"
+        link : ""
     } ,
     {
         title: "هوش مصنوعی",
         id: 2,
-        link : "/artificial-intelligence"
+        link : "wb-ai"
     } ,
     {
         title: "اخبار تکنولوژی",
         id: 3,
-        link : "/tech-news"
+        link : "wb-technology"
     } ,
     {
         title: "بازی و گیمینگ",
         id: 4,
-        link : "/gaming"
+        link : "wb-gaming"
     } ,
     {
         title: "مقالات آموزشی",
         id: 5,
-        link : "/learning-blogs"
+        link : "wb-learning"
     } ,
 ]
 

@@ -14,9 +14,9 @@ export default function AuthorInfoCard({ imgUrl, name, bio, slug }) {
           className="w-[4.5rem] md:w-24 rounded-full border-2 md:border-4
          border-darkPrimary hover:brightness-75 transition-all duration-500"
         />
-        <Link to={`/blog/author/${slug}`} className="underline-effect">
+        {slug ? <Link to={`/blog/author/${slug}`} className="underline-effect">
           <h3 className="text-2xl md:text-3xl font-bold text-darkPrimary">{name}</h3>
-        </Link>
+        </Link> : <h3 className="text-2xl md:text-3xl font-bold text-black">{name}</h3>}
         <p className="text-neutral text-base md:text-lg">{bio}</p>
       </div>
     </div>

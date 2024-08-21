@@ -33,14 +33,14 @@ export default function BlogPage() {
 
   if (loading) return <Loading />;
 
-  if (error) return <ErrorPage />;
+  if (error) return <ErrorPage error={error} />;
 
   if (data) {
     const {
       wbPost: {
         coverImage,
         mainContent,
-        postCategories,
+        wbCategory,
         publishDate,
         slug,
         title,
@@ -53,7 +53,7 @@ export default function BlogPage() {
     return (
       <article className="flex flex-col items-center w-full mt-10 px-2 md:px-10">
         <div className="categories mr-10 hidden md:flex w-full md:w-5/6 lg:w-4/6 justify-start gap-4 relative z-20 top-16">
-          {postCategories.map((category) => (
+          {wbCategory.map((category) => (
             <Link
               key={category.id}
               to={`/blog/category/${category.slug}`}
@@ -154,7 +154,7 @@ export default function BlogPage() {
 
         </div>
                 <AuthorInfoCard imgUrl={wbAuthor.profilePicture.url} name={wbAuthor.name} slug={wbAuthor.slug} bio={wbAuthor.description}/>
-                <SimilarBlogs category={postCategories[0]} quantity={2}/>
+                <SimilarBlogs category={wbCategory[0]} quantity={2}/>
       </article>
     );
   }

@@ -1,11 +1,14 @@
-import { useQuery } from "@apollo/client";
 import React from "react";
+
+import { useQuery } from "@apollo/client";
 import {
   GET_SIMILAR_BLOGS,
 } from "../../GraphQL/queries";
+
+import { useNavigate } from "react-router-dom";
+
 import Loading from "../Loading";
 import ErrorPage from "../ErrorPage";
-import { useNavigate } from "react-router-dom";
 
 export default function SimilarBlogs({ category, quantity }) {
   const { data, error, loading } = useQuery(GET_SIMILAR_BLOGS, {

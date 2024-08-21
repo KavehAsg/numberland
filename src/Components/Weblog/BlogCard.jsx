@@ -4,24 +4,23 @@ import { Link } from "react-router-dom";
 import DateDisplay from "./DateDisplay";
 
 export default function ({
-  blogData: {
+  blogData : {
     slug,
     coverImage,
-    postCategories,
+    wbCategory,
     publishDate,
     title,
     preview,
   },
 }) {
 
-
   return (
     <>
       <div className="categories flex w-full justify-center gap-3 relative z-20 top-5">
-        {postCategories.map((category) => (
+        {wbCategory.map((category) => (
           <Link
             key={category.id}
-            to={`${category.slug}`}
+            to={`/blog/category/${category.slug}`}
             className={`inline-block py-1 px-3 rounded-2xl text-white font-bold relative top-0 hover:-top-0.5 transition-all duration-300`}
             style={{
               background: `${category.color.hex}`,
@@ -44,7 +43,7 @@ export default function ({
 
           <div className="w-full text-center">
             <Link
-              to={`article/${slug}`}
+              to={`/blog/article/${slug}`}
               className="text-black font-semibold text-xl lg:text-2xl underline-effect leading-9"
             >
               {title}
