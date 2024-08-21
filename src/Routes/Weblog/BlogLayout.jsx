@@ -12,7 +12,6 @@ import ErrorPage from "../../Components/ErrorPage";
 import Loading from "../../Components/Loading";
 
 export default function BlogLayout() {
-  const { loading, error, data } = useQuery(GET_BLOGS);
 
   const navbarRef = useRef(null);
 
@@ -21,15 +20,11 @@ export default function BlogLayout() {
       behavior: "smooth",
     });
 
-  if (loading) return <Loading />;
-
-  if (error) return <ErrorPage />;
-  else if (data)
     return (
-      <div className="w-full font-numberland ">
+      <div className="w-full font-numberland bg-white">
         <WbNavbar ref={navbarRef} />
         <main>
-          <Outlet context={{ data }} />
+          <Outlet />
         </main>
         <WbFooter />
 

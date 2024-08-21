@@ -15,10 +15,12 @@ import HomePage from "./Routes/HomePage.jsx";
 import MainPage from "./Routes/Weblog/MainPage.jsx";
 import BlogLayout from "./Routes/Weblog/BlogLayout.jsx";
 import BlogPage from "./Routes/Weblog/BlogPage.jsx";
+import AuthorPage from "./Routes/Weblog/AuthorPage.jsx";
+import CategoryPage from "./Routes/Weblog/CategoryPage.jsx";
 
 
 export const client = new ApolloClient({
-  uri: "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/cly1o521a058q07w4wsgza84t/master",
+  uri: "https://eu-central-1-shared-euc1-02.cdn.hygraph.com/content/cly1o521a058q07w4wsgza84t/master",
   cache: new InMemoryCache(),
 });
 
@@ -27,10 +29,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />, // Main Layout
     children: [
-      // {
-      //   path: '',
-      //   element: <Navigate to="/blog" />, // Redirect from root to /blog
-      // },
       {
         path: "/",
         element: <HomePage />,
@@ -46,9 +44,21 @@ const router = createBrowserRouter([
         element : <MainPage /> , // Main page of Blog which render blog cards
       } ,
       {
-        path: "/blog/:slug" ,
+        path: "article/:slug" ,
         element : <BlogPage />
-      }
+      } ,
+      {
+        path: "author/:author" ,
+        element : <AuthorPage />
+      } ,
+      {
+        path: "category/:category" ,
+        element : <CategoryPage />
+      } ,
+      {
+        path: 'category',
+        element: <Navigate to="/blog" />, // Redirect from root to /blog
+      },
     ]
   }
 ]);
