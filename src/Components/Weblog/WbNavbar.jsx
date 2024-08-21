@@ -7,7 +7,6 @@ import SearchLogo from "../../assets/search.svg?react";
 import XLogo from "../../assets/xmark.svg?react";
 import BarsLogo from "../../assets/bars.svg?react";
 
-import Banner from "../../assets/banner.webp"
 
 import { Link } from "react-router-dom";
 
@@ -94,9 +93,6 @@ function WbNavbar(props , ref) {
         </button>
       </nav>
 
-      <header className="block sm:hidden lg:block w-full ">
-          <img src={Banner} alt="banner" className="wfull"/>
-      </header>
     </div>
   );
 }

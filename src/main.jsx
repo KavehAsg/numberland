@@ -18,7 +18,7 @@ import BlogPage from "./Routes/Weblog/BlogPage.jsx";
 
 
 export const client = new ApolloClient({
-  uri: "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/cly1o521a058q07w4wsgza84t/master",
+  uri: "https://eu-central-1-shared-euc1-02.cdn.hygraph.com/content/cly1o521a058q07w4wsgza84t/master",
   cache: new InMemoryCache(),
 });
 
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
         element : <MainPage /> , // Main page of Blog which render blog cards
       } ,
       {
-        path: "/blog/:slug" ,
+        path: "article/:slug" ,
         element : <BlogPage />
       }
     ]

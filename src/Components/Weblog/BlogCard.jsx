@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import CalenderLogo from "../../assets/calender.svg?react";
+
+import DateDisplay from "./DateDisplay";
 
 export default function ({
   blogData: {
@@ -12,21 +13,6 @@ export default function ({
     preview,
   },
 }) {
-  const makeDateLocalized = () => {
-    const splittedDate = publishDate.split("-"); // make it separate to match the Date input
-    const newDate = new Date(
-      Date.UTC(+splittedDate[0], +splittedDate[1], +splittedDate[2]) // year , month , day
-    );
-
-    const localizedDate = newDate.toLocaleDateString("fa-IR", {
-      day: "numeric",
-      year: "numeric",
-      month: "long",
-    }); // invert the Date to persian
-
-    const splittedLocalDate = localizedDate.split(" "); // order the date to match persian format => year,month,day to display
-    return splittedLocalDate.join().replaceAll(",", " "); // remove the ,
-  };
 
 
   return (
@@ -35,7 +21,7 @@ export default function ({
         {postCategories.map((category) => (
           <Link
             key={category.id}
-            to={category.slug}
+            to={`${category.slug}`}
             className={`inline-block py-1 px-3 rounded-2xl text-white font-bold relative top-0 hover:-top-0.5 transition-all duration-300`}
             style={{
               background: `${category.color.hex}`,
@@ -54,14 +40,11 @@ export default function ({
         />
 
         <div className="info-section flex flex-col items-center gap-3 p-5 pb-8">
-          <span className="publish-Date flex gap-2 font-light">
-            <CalenderLogo className="w-4 fill-[#eba132]" />
-            {makeDateLocalized()}
-          </span>
+         <DateDisplay publishDate={publishDate} />
 
           <div className="w-full text-center">
             <Link
-              to={slug}
+              to={`article/${slug}`}
               className="text-black font-semibold text-xl lg:text-2xl underline-effect leading-9"
             >
               {title}

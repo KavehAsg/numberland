@@ -6,6 +6,32 @@ export default {
   ],
   theme: {
     extend: {
+      typography : ({theme , themes}) => ({
+        DEFAULT : {
+         css : {
+            blockquote : {
+              "border-inline-start-color" : "#0098D1",
+              "border-inline-start-width" : "0.4rem" ,
+              p :{
+                "padding-right" : "3rem"
+              }
+            },
+            a:{
+              "color" : "#eba132" ,
+              "text-decoration" : "none" ,
+              "transition" : "ease 0.3s all" ,
+              "&:hover" :{
+                "color" : theme("colors.slimBlack")
+              }
+            } ,
+            img :{
+              "border-radius" : "0.5rem" ,
+              "width" : "100%"
+            }
+
+        }
+      }
+    }) ,
       spacing: {
         '13' : '3.15rem'
       }
@@ -20,7 +46,8 @@ export default {
         "slimBlack" : "rgba(0  ,0 ,0 , 0.7)",
         "btnHoverBg" : "#FFECEC" ,
         "btnBg" : "#F2F2F2" ,
-        "wbMenuItem" : "#007DAD"
+        "wbMenuItem" : "#007DAD" ,
+        "darkPrimary" : "#0066bf"
       },
       keyframes: {
         menuHoverEffect: {
@@ -44,6 +71,7 @@ export default {
   },
   plugins: [
     require('daisyui'),
+    require('@tailwindcss/typography'),
   ],
   daisyui: {
     themes: [
