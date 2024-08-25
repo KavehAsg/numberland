@@ -124,9 +124,9 @@ query BlogsQuery($after : String , $first : Int , $categorySlug : String!) {
   `
 
 export const GET_SIMILAR_BLOGS = gql`
-query MyQuery($category_slug : String , $first : Int) {
+query MyQuery($category_slug : String , $first : Int , $skip : Int) {
   wbCategory(where: {slug: $category_slug}) {
-    wbPost(first: $first) {
+    wbPost(first: $first , skip: $skip) {
       coverImage {
         url
       }
@@ -150,8 +150,7 @@ query BlogsQuery($after : String , $first : Int , $authorSlug : String) {
         }
         title
         slug
-        postCategories {
-          ... on WbCategory {
+          wbCategory {
             id
             slug
             title
@@ -159,7 +158,7 @@ query BlogsQuery($after : String , $first : Int , $authorSlug : String) {
               hex
             }
           }
-        }
+        
         preview
         id
       }

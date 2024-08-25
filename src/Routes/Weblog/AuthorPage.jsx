@@ -25,7 +25,6 @@ export default function AuthorPage() {
 
   if (data) {
       const {wbPostsConnection : { edges , pageInfo } , wbAuthor } = data;
-      console.log(wbAuthor)
 
     return <div className="px-4 md:px-6 lg:px-10">
         <AuthorInfoCard name={wbAuthor.name} imgUrl={wbAuthor.profilePicture.url} bio={wbAuthor.description} />
