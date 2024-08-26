@@ -9,14 +9,17 @@ import Loading from "../../Components/Loading";
 import ErrorPage from "../../Components/ErrorPage";
 import BlogCard from "../../Components/Weblog/BlogCard";
 import CategoryInfoCard from "../../Components/Weblog/CategoryInfoCard";
+import PaginationBlock from "../../Components/Weblog/PaginationBlock";
 
 export default function CategoryPage() {
-  const params = useParams();
+  const {category , page} = useParams();
+  const currentPage = page ? parseInt(page) : 1;
 
   const { loading, error, data } = useQuery(GET_BLOGS_BY_CATEGORY, {
     variables: {
-      categorySlug: params.category,
-      first: 9,
+      categorySlug: category,
+      first: 3,
+      skip : (currentPage - 1) * 3 ,
     },
   });
 
@@ -25,11 +28,9 @@ export default function CategoryPage() {
   if (error) return <ErrorPage error={error} />;
 
   if (data) {
-    const {wbPostsConnection : { edges , pageInfo } , wbCategory } = data;
-    //   console.log(edges)
+    const {wbPostsConnection : { edges ,  aggregate : {count} } , wbCategory } = data;
 
     return <div className="px-4 md:px-6 lg:px-10">
-        {/* <AuthorInfoCard name={wbAuthor.name} imgUrl={wbAuthor.profilePicture.url} bio={wbAuthor.description} /> */}
         <CategoryInfoCard title={wbCategory.title} imgUrl={wbCategory.icon.url} description={wbCategory.description} />
         <ul className="grid grid-cols-blogCards gap-12 mt-10 ">
           {edges.map((edge) => (
@@ -38,6 +39,8 @@ export default function CategoryPage() {
             </li>
           ))}
         </ul>
+
+        <PaginationBlock allCount={count} page={currentPage} pageType={"category"} param={category}/>
     </div>;
   }
 }

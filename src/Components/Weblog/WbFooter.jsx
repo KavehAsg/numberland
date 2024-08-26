@@ -8,7 +8,7 @@ import SocialMediaCards from "./SocialMediaCards.jsx";
 
 export default function WbFooter() {
   return (
-    <div className="footer-container mt-24 py-16 px-10">
+    <div className="footer-container mt-16 py-16 px-10">
       {/* first section - headers and social media - only appear in large screens > 1024 */}
       <div className="hidden lg:flex gap-8 ">
         {/* ------------------------------------ */}
@@ -62,7 +62,7 @@ export default function WbFooter() {
       {/* end of first section */}
 
       {/* footer copy right */}
-      <span className="block -mt-10 lg:mt-24 text-center text-neutral  text-sm md:text-base">تمامی حقوق برای نامبرلند محفوظ است.</span>
+      <span className="block -mt-12 lg:mt-20 text-center text-neutral  text-sm md:text-base">تمامی حقوق برای نامبرلند محفوظ است.</span>
     </div>
   );
 }
