@@ -29,7 +29,7 @@ export default function BlogPage() {
       left: 0,
       behavior: "smooth"
     });
-  }, []);
+  }, [window.location.href]);
 
   if (loading) return <Loading />;
 
@@ -154,7 +154,7 @@ export default function BlogPage() {
 
         </div>
                 <AuthorInfoCard imgUrl={wbAuthor.profilePicture.url} name={wbAuthor.name} slug={wbAuthor.slug} bio={wbAuthor.description}/>
-                <SimilarBlogs category={wbCategory[0]} quantity={2}/>
+                <SimilarBlogs category={wbCategory[0]} quantity={2} skip={1}/>
       </article>
     );
   }

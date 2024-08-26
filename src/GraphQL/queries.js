@@ -16,10 +16,9 @@ query FooterQuery {
     `
 
 export const GET_BLOGS = gql`
-query BlogsQuery($after : String , $first : Int) {
-  wbPostsConnection(after : $after , first : $first) {
+query BlogsQuery( $first : Int , $skip : Int) {
+  wbPostsConnection( first : $first , skip : $skip) {
     edges{
-      cursor
       node {
         publishDate
         coverImage {
@@ -40,11 +39,8 @@ query BlogsQuery($after : String , $first : Int) {
         id
       }
     }
-    pageInfo{
-      hasNextPage
-      hasPreviousPage
-      startCursor
-      endCursor
+    aggregate {
+      count
     }
   }
 }
@@ -83,8 +79,8 @@ export const GET_BLOG_BY_SLUG = gql`
 `
 
 export const GET_BLOGS_BY_CATEGORY = gql`
-query BlogsQuery($after : String , $first : Int , $categorySlug : String!) {
-  wbPostsConnection(where: {wbCategory_some: {slug: $categorySlug }} , after : $after , first : $first) {
+query BlogsQuery($skip : Int , $first : Int , $categorySlug : String!) {
+  wbPostsConnection(where: {wbCategory_some: {slug: $categorySlug }} , skip : $skip , first : $first) {
     edges{
       cursor
       node {
@@ -106,11 +102,8 @@ query BlogsQuery($after : String , $first : Int , $categorySlug : String!) {
         id
       }
     }
-    pageInfo{
-      hasNextPage
-      hasPreviousPage
-      startCursor
-      endCursor
+    aggregate {
+      count
     }
   }
         wbCategory(where : {slug : $categorySlug}) {
@@ -124,9 +117,9 @@ query BlogsQuery($after : String , $first : Int , $categorySlug : String!) {
   `
 
 export const GET_SIMILAR_BLOGS = gql`
-query MyQuery($category_slug : String , $first : Int) {
+query MyQuery($category_slug : String , $first : Int , $skip : Int) {
   wbCategory(where: {slug: $category_slug}) {
-    wbPost(first: $first) {
+    wbPost(first: $first , skip: $skip) {
       coverImage {
         url
       }
@@ -139,8 +132,8 @@ query MyQuery($category_slug : String , $first : Int) {
   `
 
 export const GET_BLOGS_BY_AUTHOR = gql`
-query BlogsQuery($after : String , $first : Int , $authorSlug : String) {
-  wbPostsConnection(where: {wbAuthor: {slug: $authorSlug}} , after : $after , first : $first ) {
+query BlogsQuery( $first : Int , $skip : Int , $authorSlug : String) {
+  wbPostsConnection(where: {wbAuthor: {slug: $authorSlug}} , skip : $skip , first : $first ) {
     edges{
       cursor
       node {
@@ -150,8 +143,7 @@ query BlogsQuery($after : String , $first : Int , $authorSlug : String) {
         }
         title
         slug
-        postCategories {
-          ... on WbCategory {
+          wbCategory {
             id
             slug
             title
@@ -159,16 +151,13 @@ query BlogsQuery($after : String , $first : Int , $authorSlug : String) {
               hex
             }
           }
-        }
+        
         preview
         id
       }
     }
-    pageInfo{
-      hasNextPage
-      hasPreviousPage
-      startCursor
-      endCursor
+    aggregate {
+      count
     }
   }
 

@@ -44,6 +44,10 @@ const router = createBrowserRouter([
         element : <MainPage /> , // Main page of Blog which render blog cards
       } ,
       {
+        path: "/blog/page/:page", // Pagination route for blog main page
+        element: <MainPage />, // Main page but with pagination
+      },
+      {
         path: "article/:slug" ,
         element : <BlogPage />
       } ,
@@ -52,9 +56,17 @@ const router = createBrowserRouter([
         element : <AuthorPage />
       } ,
       {
+        path: "author/:author/page/:page", // Pagination route for author page
+        element: <AuthorPage />,
+      },
+      {
         path: "category/:category" ,
         element : <CategoryPage />
       } ,
+      {
+        path: "category/:category/page/:page", // Pagination route for category page
+        element: <CategoryPage />,
+      },
       {
         path: 'category',
         element: <Navigate to="/blog" />, // Redirect from root to /blog

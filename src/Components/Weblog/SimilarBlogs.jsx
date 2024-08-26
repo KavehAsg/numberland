@@ -10,21 +10,20 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../Loading";
 import ErrorPage from "../ErrorPage";
 
-export default function SimilarBlogs({ category, quantity }) {
+export default function SimilarBlogs({ category, quantity , skip}) {
   const { data, error, loading } = useQuery(GET_SIMILAR_BLOGS, {
-    variables: { category_slug : category.slug , first: quantity },
+    variables: { category_slug : category.slug , first: quantity , skip : skip},
   });
 
   const navigate = useNavigate();
 
-  const clickHandler = (slug) => navigate(`/blog/${slug}`);
+  const clickHandler = (slug) => navigate(`/blog/article/${slug}`);
 
   if (loading) return <Loading />;
 
   if (error) return <ErrorPage />;
 
   if (data) {
-    console.log(data);
     const {wbCategory : {wbPost}} = data ;
     return <div className="w-full mt-10 flex flex-col md:flex-row gap-6 items-center justify-center">
         {wbPost.map((post) => <div key={post.id} className="w-full group rounded-xl flex flex-col justify-end items-start cursor-pointer"
