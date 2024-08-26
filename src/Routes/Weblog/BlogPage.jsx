@@ -57,7 +57,7 @@ export default function BlogPage() {
             <Link
               key={category.id}
               to={`/blog/category/${category.slug}`}
-              className={`inline-block py-1 px-4 rounded-2xl text-white font-bold relative top-0 hover:-top-0.5 transition-all duration-300`}
+              className={`inline-block py-1 px-4 rounded-2xl text-white font-bold relative top-0 hover:-translate-y-1 transition-all duration-300`}
               style={{
                 background: `${category.color.hex}`,
               }}

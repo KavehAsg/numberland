@@ -33,7 +33,7 @@ export default function MainPage() {
 
     return (
       <div>
-        <header className="block sm:hidden lg:block w-full ">
+        <header className="block mt-6 sm:hidden lg:block w-full ">
           <img src={Banner} alt="banner" className="w-full" />
         </header>
 

@@ -182,6 +182,6 @@
     @apply  flex justify-center;
   }
   #root {
-    @apply w-full max-w-[1250px];
+    @apply w-full ;
   }
 }

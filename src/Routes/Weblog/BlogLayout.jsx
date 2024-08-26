@@ -5,14 +5,8 @@ import WbNavbar from "../../Components/Weblog/WbNavbar";
 import WbFooter from "../../Components/Weblog/WbFooter";
 
 import ArrowIcon from "../../assets/arrow.svg?react";
-import { useQuery } from "@apollo/client";
-import { GET_BLOGS } from "../../GraphQL/queries";
-
-import ErrorPage from "../../Components/ErrorPage";
-import Loading from "../../Components/Loading";
 
 export default function BlogLayout() {
-
   const navbarRef = useRef(null);
 
   const scrollToTop = () =>
@@ -20,21 +14,23 @@ export default function BlogLayout() {
       behavior: "smooth",
     });
 
-    return (
-      <div className="w-full font-numberland bg-white">
+  return (
+    <div id="container" className="w-full flex justify-center">
+      <div className="w-full font-numberland max-w-[1300px] flex flex-col items-center">
         <WbNavbar ref={navbarRef} />
-        <main>
+        <main className="w-full  flex justify-center ">
           <Outlet />
         </main>
         <WbFooter />
 
         <button
           id="scroll-to-top"
-          className="btn fixed bottom-14 left-14 btn-ghost btn-circle bg-black hover:bg-neutral"
+          className="btn fixed bottom-8 left-8 btn-ghost btn-circle bg-black hover:bg-neutral z-50"
           onClick={scrollToTop}
         >
           <ArrowIcon className="w-3 h-3 -rotate-90 fill-white" />
         </button>
       </div>
-    );
+    </div>
+  );
 }
