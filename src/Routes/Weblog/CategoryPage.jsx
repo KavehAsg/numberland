@@ -18,8 +18,8 @@ export default function CategoryPage() {
   const { loading, error, data } = useQuery(GET_BLOGS_BY_CATEGORY, {
     variables: {
       categorySlug: category,
-      first: 3,
-      skip : (currentPage - 1) * 3 ,
+      first: 9,
+      skip : (currentPage - 1) * 9 ,
     },
   });
 

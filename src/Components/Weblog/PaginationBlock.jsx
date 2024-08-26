@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ErrorPage from "../ErrorPage";
 
 export default function PaginationBlock({ allCount, page, pageType, param }) {
-  const possiblePages = Math.ceil(allCount / 3);
+  const possiblePages = Math.ceil(allCount / 9);
   const navigate = useNavigate();
 
   const previousPage = (pageType, param) => {
