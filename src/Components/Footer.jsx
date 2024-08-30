@@ -5,7 +5,7 @@ import { GET_FOOTER } from "../GraphQL/queries";
 
 import { Link } from "react-router-dom";
 
-import GitHub from "../assets/github.svg?react";
+import { FaSquareGithub } from "react-icons/fa6";
 
 export default function Footer() {
   const { loading, error, data } = useQuery(GET_FOOTER);
@@ -28,7 +28,7 @@ export default function Footer() {
             <ul className="mt-5 grid grid-cols-footerLinks gap-x-6	gap-y-3 text-menuItem">
               {data.countries.map((country) => {
                 return (
-                  <li>
+                  <li key={country.id}>
                     <Link key={country.id} to={country.slug}>
                       شماره مجازی {country.countryName}
                     </Link>
@@ -46,7 +46,7 @@ export default function Footer() {
             <ul className="mt-5 grid grid-cols-footerLinks gap-x-6	gap-y-3 text-menuItem">
               {data.apps.map((app) => {
                 return (
-                  <li>
+                  <li key={app.id}>
                     <Link key={app.id} to={app.slug}>
                       شماره مجازی {app.appName}
                     </Link>
@@ -77,7 +77,7 @@ export default function Footer() {
             target="_blank"
             data-tip="Git Hub"
           >
-            <GitHub className="w-8 h-8" />
+            <FaSquareGithub className="w-8 h-8" />
           </a>
         </div>
       </div>

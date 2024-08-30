@@ -66,6 +66,8 @@ export default {
       gridTemplateColumns : {
         footerLinks : 'repeat(auto-fill , minmax( 150px , 170px))' ,
         blogCards : 'repeat(auto-fill , minmax( 350px , 1fr))' ,
+        hpListXl : 'repeat(3 , minmax( 150px , 1fr))' ,
+        hpListSm : 'repeat(2 , minmax( 110px , 1fr))' ,
       }
     },
   },

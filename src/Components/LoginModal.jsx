@@ -7,6 +7,8 @@ import XMark from "../assets/xmark.svg?react";
 import Sim from "../assets/simcart.svg?react";
 import LoginSvg from "../assets/Login.svg?react";
 
+import { FaArrowRightToBracket } from "react-icons/fa6";
+
 export default function LoginModal() {
   const [inputValues, setInputValues] = useState({
     username: "",
@@ -98,7 +100,7 @@ export default function LoginModal() {
           <>
             <div className="inputs flex flex-col gap-6 select-none">
               <label
-                className={`input bg-base-300 group h-16 !outline-none border-2 placeholder-shown:bg-black flex flex-row-reverse items-center gap-2 focus-within:bg-inherit focus-within:border-info transition-all duration-500 input-filled`}
+                className={`input bg-base-300 mt-6 group h-16 !outline-none border-2 placeholder-shown:bg-black flex flex-row-reverse items-center gap-2 focus-within:bg-inherit focus-within:border-info transition-all duration-500 input-filled`}
               >
                 <Sim className="h-6 w-6 opacity-70 group-focus-within:fill-info transition-all duration-300" />
                 <input
@@ -139,7 +141,7 @@ export default function LoginModal() {
         className="relative button-effect hover:scale-105 z-10 transition-all duration-300 overflow-hidden flex justify-between items-center rounded-md p-2 pr-5 gap-1 text-white h-8 lg:h-8 bg-secondary before:right-[-15px]"
         onClick={() => document.getElementById("login-modal").showModal()}
       >
-        <LoginSvg className="w-4 lg:w-4 " />
+        <FaArrowRightToBracket className="w-4 lg:w-4 " />
         ورود | ثبت نام
       </button>
       <dialog id="login-modal" className="modal">

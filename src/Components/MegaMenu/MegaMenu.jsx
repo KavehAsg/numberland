@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 
 import ExpandableSubMenu from "./ExpandableSubMenu";
 
-import Dropdown from "../../assets/dropdown.svg?react";
-import XMark from "../../assets/xmark.svg?react";
+import { FaChevronDown } from "react-icons/fa6"; // drop down 
+import { FaX } from "react-icons/fa6";
+
 
 function menuReducer(state, action) {
   switch (action.type) {
@@ -120,7 +121,7 @@ export default function MegaMenu({ navbarMenu }) {
               >
                 <div className="submenu-titles">
                   {menu.title}
-                  <Dropdown className="menu-svg" />
+                  <FaChevronDown className="menu-svg" />
                 </div>
               </li>
             );
@@ -205,7 +206,7 @@ export default function MegaMenu({ navbarMenu }) {
             className="btn btn-circle border-none bg-inherit shadow-none hover:rotate-180 hover:bg-btnHoverBg duration-500"
             onClick={() => dispatch({ type: "burgerMenu-close" })}
           >
-            <XMark />
+            <FaX />
           </button>
 
           <ul className="w-full">
@@ -231,7 +232,7 @@ export default function MegaMenu({ navbarMenu }) {
                       }
                     >
                       {menu.title}
-                      <Dropdown className="menu-svg" />
+                      <FaChevronDown className="menu-svg" />
                     </div>
                     <div
                       className={`w-full flex flex-col  h-[1px] bg-base-100 rounded-md overflow-hidden transition-all duration-300

@@ -74,7 +74,6 @@
     background-size: 100% 0.2em, 0 0.2em;
   }
 
-  /* .arrow-top: */
   .arrow-top::before {
     content: "";
     width: 18px;
@@ -156,6 +155,21 @@
     border-radius: 10px;
   }
 
+  .hp-listItem{
+    @apply flex items-center gap-3 font-light text-base text-neutral bg-base-200 px-4 py-3 rounded-lg hover:bg-primary hover:text-white transition-all duration-300
+  }
+  .hp-listItem-icon{
+    @apply w-6 h-6
+  }
+
+  .common-questions p{
+    @apply text-neutral pr-2 py-2
+  }
+
+  .common-questions h6{
+    @apply text-darkPrimary text-lg
+  }
+
 }
 
 @layer utilities {
@@ -173,7 +187,6 @@
     opacity: 0;
     pointer-events: none;
   }
-
 }
 
 @layer base {
