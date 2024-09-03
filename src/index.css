@@ -155,21 +155,58 @@
     border-radius: 10px;
   }
 
-  .hp-listItem{
-    @apply flex items-center gap-3 font-light text-base text-neutral bg-base-200 px-4 py-3 rounded-lg hover:bg-primary hover:text-white transition-all duration-300
+  .hp-listItem {
+    @apply flex items-center gap-3 font-light text-base text-neutral bg-base-200 px-4 py-3 rounded-lg hover:bg-primary hover:text-white transition-all duration-300;
   }
-  .hp-listItem-icon{
-    @apply w-6 h-6
-  }
-
-  .common-questions p{
-    @apply text-neutral pr-2 py-2
+  .hp-listItem-icon {
+    @apply w-6 h-6;
   }
 
-  .common-questions h6{
-    @apply text-darkPrimary text-lg
+  .common-questions p {
+    @apply text-neutral pr-2 py-2;
   }
 
+  .common-questions h6 {
+    @apply text-darkPrimary text-lg;
+  }
+
+  .clickedServiceBtn {
+    @apply text-darkPrimary;
+  }
+  .clickedServiceBtn::after {
+    content: "";
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    bottom: -14px;
+    left: 0;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+
+    @apply bg-primary;
+  }
+
+  .mobbuydis::after {
+    content: "";
+}
+
+  @media (min-width: 0px) and (max-width: 640px) {
+    .mobbuydis::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-repeat: repeat;
+      height: 15px;
+      background-size: 32px 20px;
+      background-image: radial-gradient(
+        circle at 8px 19px,
+        #f4f7fb 12px,
+        transparent 13px
+      );
+    }
+  }
 }
 
 @layer utilities {
@@ -190,11 +227,10 @@
 }
 
 @layer base {
-  
   body {
-    @apply  flex justify-center;
+    @apply flex justify-center;
   }
   #root {
-    @apply w-full ;
+    @apply w-full;
   }
 }

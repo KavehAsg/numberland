@@ -22,20 +22,18 @@ export default function HomePage() {
   const [isCollapseOpen, setIsCollapseOpen] = useState(false);
 
   return (
-    <div className="flex flex-col items-center py-10 gap-16">
+    <div className="flex flex-col items-center py-10 gap-16 px-2 sm:px-8 ">
       <Link to={"/"} className="w-full">
         <NumberLandLogo className="w-4/5 md:w-[350px] mx-auto" />
       </Link>
 
       <div
         id="main-container"
-        className="w-full max-w-[1050px] bg-white px-2 py-8 rounded-xl flex flex-col lg:flex-row lg:justify-center "
+        className="w-full max-w-[1050px] bg-white sm:px-2 py-8 rounded-xl flex flex-col lg:flex-row-reverse lg:justify-center"
       >
-        <Outlet id="number-section" className="w-full lg:w-5/12"/>
-
         <div
           id="content"
-          className="w-full lg:w-7/12 flex flex-col justify-start items-start gap-4 px-2 md:px-4"
+          className="relative w-full lg:w-7/12 flex flex-col justify-start items-start gap-4 px-2 md:px-4 mobbuydis"
         >
           <span className="text-accent flex justify-center gap-2 w-full">
             <FaCheck />
@@ -181,6 +179,9 @@ export default function HomePage() {
             </div>
           </section>
         </div>
+
+        <Outlet id="number-section"/>
+
       </div>
     </div>
   );
