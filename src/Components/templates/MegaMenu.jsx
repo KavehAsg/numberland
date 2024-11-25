@@ -2,7 +2,7 @@ import React, { useRef, useReducer } from "react";
 
 import { Link } from "react-router-dom";
 
-import ExpandableSubMenu from "./ExpandableSubMenu";
+import ExpandableSubMenu from "../modules/ExpandableSubMenu.jsx";
 
 import { FaChevronDown } from "react-icons/fa6"; // drop down 
 import { FaX } from "react-icons/fa6";
@@ -130,7 +130,7 @@ export default function MegaMenu({ navbarMenu }) {
 
         {/* submenu container */}
         <div
-          className={`absolute menu-transition pt-3 rounded-lg text-base tracking-tight font-normal ${
+          className={`absolute menu-transition pt-3 rounded-lg text-base tracking-tight font-normal z-50 ${
             !isSubmenuHovered && !isMenuTitleHovered && "pointer-events-none"
           }`}
           style={{

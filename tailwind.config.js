@@ -47,7 +47,8 @@ export default {
         "btnHoverBg" : "#FFECEC" ,
         "btnBg" : "#F2F2F2" ,
         "wbMenuItem" : "#007DAD" ,
-        "darkPrimary" : "#0066bf"
+        "darkPrimary" : "#0066bf",
+        "lightBlue" : "#EBF9FF"
       },
       keyframes: {
         menuHoverEffect: {
@@ -69,6 +70,7 @@ export default {
         blogCards : 'repeat(auto-fill , minmax( 350px , 1fr))' ,
         hpListXl : 'repeat(3 , minmax( 150px , 1fr))' ,
         hpListSm : 'repeat(2 , minmax( 110px , 1fr))' ,
+        numbersPanel : 'repeat(4 , minmax( 25% , 1fr))' ,
       }
     },
   },

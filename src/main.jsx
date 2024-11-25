@@ -17,7 +17,7 @@ import BlogLayout from "./Routes/Weblog/BlogLayout.jsx";
 import BlogPage from "./Routes/Weblog/BlogPage.jsx";
 import AuthorPage from "./Routes/Weblog/AuthorPage.jsx";
 import CategoryPage from "./Routes/Weblog/CategoryPage.jsx";
-import SelectService from "./Components/SelectService.jsx";
+import SelectServiceMenu from "./Components/templates/SelectServiceMenu.jsx";
 
 export const client = new ApolloClient({
   uri: "https://eu-central-1-shared-euc1-02.cdn.hygraph.com/content/cly1o521a058q07w4wsgza84t/master",
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/",
-            element: <SelectService />,
+            element: <SelectServiceMenu />,
           },
         ],
       },

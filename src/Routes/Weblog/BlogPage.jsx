@@ -6,8 +6,8 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_BLOG_BY_SLUG } from "../../GraphQL/queries";
 
-import Loading from "../../Components/Loading";
-import ErrorPage from "../../Components/ErrorPage";
+import Loading from "../../Components/modules/Loading.jsx";
+import ErrorPage from "../../Components/templates/ErrorPage.jsx";
 import DateDisplay from "../../Components/Weblog/DateDisplay";
 
 import Banner from "../../assets/banner.webp";
@@ -27,7 +27,7 @@ export default function BlogPage() {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   }, [window.location.href]);
 
@@ -47,7 +47,7 @@ export default function BlogPage() {
         wbAuthor,
       },
     } = data;
-
+    console.log(mainContent);
     const contentHtml = { __html: mainContent.html };
 
     return (
@@ -118,7 +118,10 @@ export default function BlogPage() {
             id="sharing-section"
             className="w-full mt-16 py-12 border-y-2 flex flex-col items-center gap-8"
           >
-            <div id="socials" className="flex flex-col md:flex-row items-center gap-3">
+            <div
+              id="socials"
+              className="flex flex-col md:flex-row items-center gap-3"
+            >
               <span className="text-xl font-bold inline-block">
                 اشتراک گذاری مطلب:{" "}
               </span>
@@ -131,7 +134,9 @@ export default function BlogPage() {
                       background: social.color,
                     }}
                   >
-                    <span className="inline-block w-4 md:w-5">{social.icon}</span>
+                    <span className="inline-block w-4 md:w-5">
+                      {social.icon}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -140,21 +145,29 @@ export default function BlogPage() {
             <label
               id="copy-link"
               className="w-4/5 md:w-3/5 p-1 bg-base-300 rounded-2xl py-2 px-6 flex items-center gap-3 focus:border-gray-300"
-              onClick={() => navigator.clipboard.writeText(window.location.href)}
+              onClick={() =>
+                navigator.clipboard.writeText(window.location.href)
+              }
             >
               <button type="button" id="copy-btn" className="peer">
                 <CopyIcon className="w-4 fill-secondary" />
               </button>
-              <span dir="ltr" className="w-full max-w-full overflow-hidden text-nowrap  peer-focus:bg-primary">
+              <span
+                dir="ltr"
+                className="w-full max-w-full overflow-hidden text-nowrap  peer-focus:bg-primary"
+              >
                 {window.location.href}
               </span>
             </label>
           </div>
-
-
         </div>
-                <AuthorInfoCard imgUrl={wbAuthor.profilePicture.url} name={wbAuthor.name} slug={wbAuthor.slug} bio={wbAuthor.description}/>
-                <SimilarBlogs category={wbCategory[0]} quantity={2} skip={1}/>
+        <AuthorInfoCard
+          imgUrl={wbAuthor.profilePicture.url}
+          name={wbAuthor.name}
+          slug={wbAuthor.slug}
+          bio={wbAuthor.description}
+        />
+        <SimilarBlogs category={wbCategory[0]} quantity={2} skip={1} />
       </article>
     );
   }

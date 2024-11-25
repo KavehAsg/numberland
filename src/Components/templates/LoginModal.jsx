@@ -1,11 +1,10 @@
 import React, {  useState } from "react";
 
-import KeySvg from "../assets/key.svg?react";
-import AvatarSvg from "../assets/avatar.svg?react";
-import EyeSvg from "../assets/eye.svg?react";
-import XMark from "../assets/xmark.svg?react";
-import Sim from "../assets/simcart.svg?react";
-import LoginSvg from "../assets/Login.svg?react";
+import KeySvg from "../../assets/key.svg?react";
+import AvatarSvg from "../../assets/avatar.svg?react";
+import EyeSvg from "../../assets/eye.svg?react";
+import XMark from "../../assets/xmark.svg?react";
+import Sim from "../../assets/simcart.svg?react";
 
 import { FaArrowRightToBracket } from "react-icons/fa6";
 
@@ -138,7 +137,7 @@ export default function LoginModal() {
   return (
     <div>
       <button
-        className="relative button-effect hover:scale-105 z-10 transition-all duration-300 overflow-hidden flex justify-between items-center rounded-md p-2 pr-5 gap-1 text-white h-8 lg:h-8 bg-secondary before:right-[-15px]"
+        className="relative button-effect hover:scale-105 z-10 transition-all duration-500 overflow-hidden flex justify-between items-center rounded-md p-2 pr-5 gap-1 text-white h-8 lg:h-8 bg-secondary before:right-[-15px]"
         onClick={() => document.getElementById("login-modal").showModal()}
       >
         <FaArrowRightToBracket className="w-4 lg:w-4 " />

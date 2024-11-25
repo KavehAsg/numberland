@@ -1,9 +1,9 @@
 import React from "react";
 
-import MegaMenu from "./MegaMenu/MegaMenu";
-import LoginModal from "./LoginModal";
+import MegaMenu from "./MegaMenu.jsx";
+import LoginModal from "./LoginModal.jsx";
 
-import { navbarMenu } from "../Helpers/navbarMenuItems";
+import { navbarMenu } from "../../Helpers/navbarMenuItems.js";
 // Menu Items - array of objects
 
 export default function Navbar({}) {

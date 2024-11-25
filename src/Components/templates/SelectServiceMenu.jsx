@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import { BsChatSquareText } from "react-icons/bs";
 import { GoClock } from "react-icons/go";
 import { GoStar } from "react-icons/go";
+import TempNumbers from "./TempNumbers.jsx";
 
-export default function SelectService() {
+export default function SelectServiceMenu() {
   const [service, setService] = useState("temp-numbers");
   const btnClickHandler = (event) => {
     let name = event.target.name;
@@ -18,7 +19,7 @@ export default function SelectService() {
         نوع شماره مجازی را برای خرید انتخاب کنید:
       </span>
 
-      <div className="w-full sticky top-0 z-10 bg-base-100 sm:bg-white pt-3 shadow-selectServiceShadow">
+      <div id="select-service" className="w-full sticky top-0 z-50 bg-base-100 sm:bg-white pt-3 shadow-selectServiceShadow">
         <div
           id="dropdown-buttons"
           className="w-full flex justify-around text-gray-500 text-lg sm:text-xl"
@@ -64,17 +65,17 @@ export default function SelectService() {
         id="temp-section"
         className={`origin-top ${
           service === "temp-numbers"
-            ? "scale-y-200 max-h-[1200px] py-4"
+            ? "scale-y-200 min-h-fit py-4"
             : "scale-y-0 max-h-0"
         } transition-all duration-300`}
       >
-        temp
+        <TempNumbers />
       </div>
       <div
         id="rental-section"
         className={`origin-top ${
           service === "rental-numbers"
-            ? "scale-y-200 max-h-[1200px] py-4"
+            ? "scale-y-200 min-h-fit py-4"
             : "scale-y-0 max-h-0"
         } transition-all duration-300`}
       >
@@ -84,7 +85,7 @@ export default function SelectService() {
         id="permanent-section"
         className={`origin-top ${
           service === "permanent-numbers"
-            ? "scale-y-200 max-h-[1200px] py-4"
+            ? "scale-y-200 min-h-fit py-4"
             : "scale-y-0 max-h-0"
         } transition-all duration-300`}
       >

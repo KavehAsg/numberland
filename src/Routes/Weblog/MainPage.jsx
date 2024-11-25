@@ -4,8 +4,8 @@ import { useQuery } from "@apollo/client";
 import { GET_BLOGS } from "../../GraphQL/queries";
 
 import BlogCard from "../../Components/Weblog/BlogCard";
-import Loading from "../../Components/Loading";
-import ErrorPage from "../../Components/ErrorPage";
+import Loading from "../../Components/modules/Loading.jsx";
+import ErrorPage from "../../Components/templates/ErrorPage.jsx";
 
 import Banner from "../../assets/banner.webp"
 import { useParams } from "react-router-dom";
