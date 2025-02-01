@@ -171,3 +171,36 @@ query BlogsQuery( $first : Int , $skip : Int , $authorSlug : String) {
   }
 }
   `
+
+export const GET_APPS = gql`
+  query BlogQuery {
+    apps {
+      appName
+      id
+      slug
+        appIcon {
+          id
+          url
+        }
+   }
+  }
+`
+
+export const GET_TEMP_NUMBERS_BY_APP = gql`
+query BlogQuery($appSlug : String) {
+  countries(where: {tempNumbers_some: {referals_some: {App: {slug: $appSlug}}}}) 
+  {
+    id
+    countryFlag {
+      url
+    }
+    countryName
+    slug
+    countryCode
+    price
+    tempNumbers {
+      number
+    }
+  }
+}
+`

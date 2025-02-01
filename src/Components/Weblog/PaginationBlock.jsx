@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import ErrorPage from "../ErrorPage";
+import ErrorPage from "../templates/ErrorPage.jsx";
 
 export default function PaginationBlock({ allCount, page, pageType, param }) {
   const possiblePages = Math.ceil(allCount / 9);

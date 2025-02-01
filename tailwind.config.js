@@ -47,7 +47,8 @@ export default {
         "btnHoverBg" : "#FFECEC" ,
         "btnBg" : "#F2F2F2" ,
         "wbMenuItem" : "#007DAD" ,
-        "darkPrimary" : "#0066bf"
+        "darkPrimary" : "#0066bf",
+        "lightBlue" : "#EBF9FF"
       },
       keyframes: {
         menuHoverEffect: {
@@ -59,6 +60,7 @@ export default {
       boxShadow: {
         custom: '0px 0px 3px 2px rgba(0, 152, 209, 0.05)',
         burgerShadow: '0px 0px 400px 80px #EAEAEA',
+        selectServiceShadow : "0px 15px 16px -7px #FFFFFF"
       },
       animation: {
         menuHoverEffect: 'menuHoverEffect 0.4s ease-out',
@@ -66,6 +68,9 @@ export default {
       gridTemplateColumns : {
         footerLinks : 'repeat(auto-fill , minmax( 150px , 170px))' ,
         blogCards : 'repeat(auto-fill , minmax( 350px , 1fr))' ,
+        hpListXl : 'repeat(3 , minmax( 150px , 1fr))' ,
+        hpListSm : 'repeat(2 , minmax( 110px , 1fr))' ,
+        numbersPanel : 'repeat(4 , minmax( 25% , 1fr))' ,
       }
     },
   },

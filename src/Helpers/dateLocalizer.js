@@ -1,5 +1,5 @@
 export const makeDateLocalized = (publishDate) => {
-    const splittedDate = publishDate.split("-"); // make it separate to match the Date input
+    const splittedDate = publishDate.substring(0,9).split("-"); // make it separate to match the Date input
     const newDate = new Date(
       Date.UTC(+splittedDate[0], +splittedDate[1], +splittedDate[2]) // year , month , day
     );

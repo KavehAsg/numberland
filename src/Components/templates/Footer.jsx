@@ -1,19 +1,22 @@
 import React from "react";
 
 import { useQuery } from "@apollo/client";
-import { GET_FOOTER } from "../GraphQL/queries";
+import { GET_FOOTER } from "../../GraphQL/queries.js";
 
 import { Link } from "react-router-dom";
 
-import GitHub from "../assets/github.svg?react";
+import { FaSquareGithub } from "react-icons/fa6";
+import Loading from "./LoadingPage.jsx";
+import ErrorPage from "./ErrorPage.jsx";
 
 export default function Footer() {
   const { loading, error, data } = useQuery(GET_FOOTER);
 
-  if (loading) return "Loading...";
+  if (loading) return <Loading />;
 
-  if (error) return <span>error</span>;
-  else if (data)
+  if (error) return <ErrorPage error={error} />;
+
+  if (data) {
     return (
       <div // Footer Container
         className="bg-white w-full p-5 pb-2 lg:p-8 lg:pb-3 text-[13px]"
@@ -28,7 +31,7 @@ export default function Footer() {
             <ul className="mt-5 grid grid-cols-footerLinks gap-x-6	gap-y-3 text-menuItem">
               {data.countries.map((country) => {
                 return (
-                  <li>
+                  <li key={country.id}>
                     <Link key={country.id} to={country.slug}>
                       شماره مجازی {country.countryName}
                     </Link>
@@ -46,7 +49,7 @@ export default function Footer() {
             <ul className="mt-5 grid grid-cols-footerLinks gap-x-6	gap-y-3 text-menuItem">
               {data.apps.map((app) => {
                 return (
-                  <li>
+                  <li key={app.id}>
                     <Link key={app.id} to={app.slug}>
                       شماره مجازی {app.appName}
                     </Link>
@@ -77,9 +80,10 @@ export default function Footer() {
             target="_blank"
             data-tip="Git Hub"
           >
-            <GitHub className="w-8 h-8" />
+            <FaSquareGithub className="w-8 h-8" />
           </a>
         </div>
       </div>
     );
+  }
 }
