@@ -1,7 +1,7 @@
 import api, { apiFormData } from "../configs/axios";
 
-export async function getAllBlogs() {
-    const response = await api.get('blog?limit=20');
+export async function getAllBlogs({pageNumber = 1 , limit = 9 }) {
+    const response = await api.get(`blog?limit=${limit}&pageNumber${pageNumber}`);
     return response;
 }
 
@@ -12,6 +12,11 @@ export async function getBlogBySlug(blogSlug) {
 
 export async function getBlogByAuthor(blogSlug) {
     const response = await api.get(`blog/SearchByAuthor/${blogSlug}`);
+    return response;
+}
+
+export async function getBlogByCategory(categorySlug) {
+    const response = await api.get(`blog/SearchByCategory/${categorySlug}`);
     return response;
 }
 

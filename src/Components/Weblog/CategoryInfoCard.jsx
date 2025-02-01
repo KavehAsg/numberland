@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function CategoryInfoCard({ imgUrl, title, description }) {
   return (
     <div
@@ -9,7 +7,7 @@ export default function CategoryInfoCard({ imgUrl, title, description }) {
       <div className="flex flex-col items-center gap-5 relative -top-12">
         <div className="flex justify-center items-center w-20 h-20 md:w-24 md:h-24 bg-darkPrimary rounded-full">
           <img
-            src={imgUrl}
+            src={`${import.meta.env.VITE_BASE_URL}/${imgUrl}`}
             alt="profile picture"
             className="w-8 md:w-12 "
           />

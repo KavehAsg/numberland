@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 import { useParams } from "react-router-dom";
 
@@ -7,7 +7,6 @@ import ErrorPage from "../../Components/templates/ErrorPage.jsx";
 import DateSnippet from "../../Components/Weblog/DateSnippet.jsx";
 import ShareCard from "../../Components/Weblog/ShareCard.jsx";
 import AuthorInfoCard from "../../Components/Weblog/AuthorInfoCard";
-import SimilarBlogs from "../../Components/Weblog/SimilarBlogs";
 
 import Banner from "../../assets/banner.webp";
 
@@ -17,11 +16,13 @@ import AuthorSnippet from "../../Components/Weblog/AuthorSnippet.jsx";
 import CategoriesSnippet from "../../Components/Weblog/CategoriesSnippet.jsx";
 
 export default function BlogPage() {
-  const params = useParams();
+  const {slug} = useParams();
 
   const { data, error, isPending } = useQuery({
-    queryKey: ["getBlogBySlug"],
-    queryFn: () => getBlogBySlug(params.slug),
+    queryKey: ["getBlogBySlug" , `${slug}`],
+    queryFn: () => getBlogBySlug(slug),
+    gcTime : 1 * 60 * 60 * 1000, // 2 hours
+    staleTime : 30 * 60 * 1000, // 30 minutes
   });
 
   useEffect(() => {
@@ -99,7 +100,6 @@ export default function BlogPage() {
           slug={blogAuthor.slug}
           bio={blogAuthor.description}
         />
-        {/* <SimilarBlogs category={wbCategory[0]} quantity={2} skip={1} /> */}
       </article>
     );
   }
