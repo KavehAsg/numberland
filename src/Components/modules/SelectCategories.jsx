@@ -11,8 +11,7 @@ export default function SelectCategories({
   const { isPending, isError, data, refetch, error } = useQuery({
     queryKey: ["getCategories"],
     queryFn: getCategories,
-    gcTime: 5 * 60 * 1000,
-    staleTime: 1 * 60 * 1000,
+    gcTime: 1 * 60 * 60 * 1000, // 1 hours
     refetchOnMount: false,
   });
 

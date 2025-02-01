@@ -114,7 +114,6 @@ export default function TempNumbers() {
             return <AppNumbersPanel key={app.id} app={app} />;
           })}
         </div>
-
       </div>
     );
   }
