@@ -18,6 +18,8 @@ import BlogPage from "./Routes/Weblog/BlogPage.jsx";
 import AuthorPage from "./Routes/Weblog/AuthorPage.jsx";
 import CategoryPage from "./Routes/Weblog/CategoryPage.jsx";
 import SelectServiceMenu from "./Components/templates/SelectServiceMenu.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import AdminPanel from "./Routes/AdminPanel.jsx";
 
 export const client = new ApolloClient({
   uri: "https://eu-central-1-shared-euc1-02.cdn.hygraph.com/content/cly1o521a058q07w4wsgza84t/master",
@@ -39,6 +41,14 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "/admin/panel",
+        element: <AdminPanel />,
+      },
+      {
+        path: "/admin",
+        element: <Navigate to="/admin/panel" />,
+      },
     ],
   },
   {
@@ -58,12 +68,20 @@ const router = createBrowserRouter([
         element: <BlogPage />,
       },
       {
+        path: "article",
+        element: <Navigate to="/blog" />, // Redirect from article root to /blog
+      },
+      {
         path: "author/:author",
         element: <AuthorPage />,
       },
       {
         path: "author/:author/page/:page", // Pagination route for author page
         element: <AuthorPage />,
+      },
+      {
+        path: "author",
+        element: <Navigate to="/blog" />, // Redirect from author root to /blog
       },
       {
         path: "category/:category",
@@ -75,16 +93,20 @@ const router = createBrowserRouter([
       },
       {
         path: "category",
-        element: <Navigate to="/blog" />, // Redirect from root to /blog
+        element: <Navigate to="/blog" />, // Redirect from category root to /blog
       },
     ],
   },
 ]);
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </ApolloProvider>
   </React.StrictMode>
 );

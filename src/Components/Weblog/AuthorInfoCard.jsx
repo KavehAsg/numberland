@@ -9,7 +9,7 @@ export default function AuthorInfoCard({ imgUrl, name, bio, slug }) {
     >
       <div className="flex flex-col items-center gap-3 relative -top-12">
         <img
-          src={imgUrl}
+          src={`${import.meta.env.VITE_BASE_URL}/${imgUrl}`}
           alt="profile picture"
           className="w-[4.5rem] md:w-24 rounded-full border-2 md:border-4
          border-darkPrimary hover:brightness-75 transition-all duration-500"

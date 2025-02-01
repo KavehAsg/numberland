@@ -1,37 +1,42 @@
 import React from "react";
 
-import { useQuery } from "@apollo/client";
-import { GET_BLOGS_BY_AUTHOR } from "../../GraphQL/queries";
-
 import { useParams } from "react-router-dom";
 
-import Loading from "../../Components/modules/Loading.jsx";
+import Loading from "../../Components/templates/LoadingPage.jsx";
 import ErrorPage from "../../Components/templates/ErrorPage.jsx";
 import BlogCard from "../../Components/Weblog/BlogCard";
 import AuthorInfoCard from "../../Components/Weblog/AuthorInfoCard";
 import PaginationBlock from "../../Components/Weblog/PaginationBlock";
+import { useQuery } from "@tanstack/react-query";
+import { getBlogByAuthor } from "../../services/blogs.js";
 
 export default function AuthorPage() {
   const {author , page} = useParams();
   const currentPage = page ? parseInt(page) : 1;
 
-  const { loading, error, data } = useQuery(GET_BLOGS_BY_AUTHOR, {
-    variables: {
-      authorSlug: author,
-      first: 9,
-      skip : (currentPage - 1) * 9 ,
-    },
+  const { data, error, isPending } = useQuery({
+    queryKey: ["getBlogByAuthor"],
+    queryFn: () => getBlogByAuthor(params.slug),
   });
 
-  if (loading) return <Loading />;
+  if (isPending) return <Loading />;
 
   if (error) return <ErrorPage  error={error}/>;
 
   if (data) {
-      const {wbPostsConnection : { edges ,  aggregate : {count} } , wbAuthor } = data;
+    const {
+      blogSlug,
+      blogFeaturedImagePath,
+      blogCategories,
+      publishedAt,
+      blogTitle,
+      blogContent,
+      blogAuthor,
+    } = data.data;
 
     return <div className="px-4 md:px-6 lg:px-10">
-        <AuthorInfoCard name={wbAuthor.name} imgUrl={wbAuthor.profilePicture.url} bio={wbAuthor.description} />
+        <AuthorInfoCard name={blogAuthor.name} imgUrl={blogAuthor.imagePath} bio={blogAuthor.description} />
+        
         <ul className="grid grid-cols-blogCards gap-12 mt-10 ">
           {edges.map((edge) => (
             <li key={edge.node.id}>
@@ -40,7 +45,7 @@ export default function AuthorPage() {
           ))}
         </ul>
 
-        <PaginationBlock allCount={count} page={currentPage} pageType={"author"} param={author}/>
+        {/* <PaginationBlock allCount={count} page={currentPage} pageType={"author"} param={author}/> */}
 
     </div>;
   }

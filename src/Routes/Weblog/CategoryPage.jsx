@@ -5,7 +5,7 @@ import { GET_BLOGS_BY_CATEGORY } from "../../GraphQL/queries";
 
 import { useParams } from "react-router-dom";
 
-import Loading from "../../Components/modules/Loading.jsx";
+import Loading from "../../Components/templates/LoadingPage.jsx";
 import ErrorPage from "../../Components/templates/ErrorPage.jsx";
 import BlogCard from "../../Components/Weblog/BlogCard";
 import CategoryInfoCard from "../../Components/Weblog/CategoryInfoCard";

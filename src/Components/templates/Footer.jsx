@@ -6,7 +6,7 @@ import { GET_FOOTER } from "../../GraphQL/queries.js";
 import { Link } from "react-router-dom";
 
 import { FaSquareGithub } from "react-icons/fa6";
-import Loading from "../modules/Loading.jsx";
+import Loading from "./LoadingPage.jsx";
 import ErrorPage from "./ErrorPage.jsx";
 
 export default function Footer() {

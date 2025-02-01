@@ -12,7 +12,7 @@ import { FaAngleDown } from "react-icons/fa6";
 import { FaAngleUp } from "react-icons/fa6";
 import { useQuery } from "@apollo/client";
 import { GET_APPS } from "../../GraphQL/queries.js";
-import Loading from "../modules/Loading.jsx";
+import Loading from "./LoadingPage.jsx";
 import ErrorPage from "./ErrorPage.jsx";
 import AppNumbersPanel from "../modules/AppNumbersPanel.jsx";
 

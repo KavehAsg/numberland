@@ -130,7 +130,7 @@ export default function MegaMenu({ navbarMenu }) {
 
         {/* submenu container */}
         <div
-          className={`absolute menu-transition pt-3 rounded-lg text-base tracking-tight font-normal z-50 ${
+          className={`absolute menu-transition pt-3 rounded-lg text-base tracking-tight font-normal z-[1000] ${
             !isSubmenuHovered && !isMenuTitleHovered && "pointer-events-none"
           }`}
           style={{

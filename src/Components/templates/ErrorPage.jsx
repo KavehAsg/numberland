@@ -1,4 +1,3 @@
-import React from "react";
 import SadIcon from "../../assets/sadIcon.svg?react"
 
 export default function ErrorPage({error}) {

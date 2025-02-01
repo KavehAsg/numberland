@@ -7,7 +7,7 @@ import {
 
 import { useNavigate } from "react-router-dom";
 
-import Loading from "../modules/Loading.jsx";
+import Loading from "../templates/LoadingPage.jsx";
 import ErrorPage from "../templates/ErrorPage.jsx";
 
 export default function SimilarBlogs({ category, quantity , skip}) {

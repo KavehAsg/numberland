@@ -23,10 +23,7 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col items-center py-10 gap-16 px-2 sm:px-8 ">
-      <Link to={"/"} className="w-full">
-        <NumberLandLogo className="w-4/5 md:w-[350px] mx-auto" />
-      </Link>
-
+      
       <div
         id="main-container"
         className="w-full max-w-[1050px] bg-white sm:px-2 py-8 rounded-xl flex flex-col lg:flex-row-reverse lg:justify-center"
