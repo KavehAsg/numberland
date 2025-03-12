@@ -1,7 +1,7 @@
 import React from "react";
 
 import MegaMenu from "./MegaMenu.jsx";
-import LoginModal from "./LoginModal.jsx";
+import LoginModal from "./LoginButton.jsx";
 
 import { navbarMenu } from "../../Helpers/navbarMenuItems.js";
 // Menu Items - array of objects

@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 
 import KeySvg from "../../assets/key.svg?react";
 import AvatarSvg from "../../assets/avatar.svg?react";
@@ -6,9 +6,7 @@ import EyeSvg from "../../assets/eye.svg?react";
 import XMark from "../../assets/xmark.svg?react";
 import Sim from "../../assets/simcart.svg?react";
 
-import { FaArrowRightToBracket } from "react-icons/fa6";
-
-export default function LoginModal() {
+export default function LoginForm() {
   const [inputValues, setInputValues] = useState({
     username: "",
     password: "",
@@ -31,7 +29,6 @@ export default function LoginModal() {
     console.log(name);
     setLoginMethod(`login-${name}`);
   };
-
 
   const switchLoginMethods = () => {
     switch (loginMethod) {
@@ -136,28 +133,10 @@ export default function LoginModal() {
 
   return (
     <div>
-      <button
-        className="relative button-effect hover:scale-105 z-10 transition-all duration-500 overflow-hidden flex justify-between items-center rounded-md p-2 pr-5 gap-1 text-white h-8 lg:h-8 bg-secondary before:right-[-15px]"
-        onClick={() => document.getElementById("login-modal").showModal()}
-      >
-        <FaArrowRightToBracket className="w-4 lg:w-4 " />
-        ورود | ثبت نام
-      </button>
-      <dialog id="login-modal" className="modal">
-        <div className="modal-box pt-5 md:pt-8 w-[95%] lg:w-[460px] px-7 md:px-14 absolute top-[5%] h-fit rounded-3xl">
-          <form method="dialog">
-            <button className="btn btn-circle border-none bg-inherit shadow-none hover:rotate-180 hover:bg-btnHoverBg duration-500">
-              <XMark />
-            </button>
-          </form>
-          <span className="block text-center text-xl lg:text-2xl">
-            ورود / ثبت نام
-          </span>
-
-            {switchLoginMethods()}
-
-        </div>
-      </dialog>
+      <span className="block text-center text-xl lg:text-2xl">
+        ورود / ثبت نام
+      </span>
+      {switchLoginMethods()}
     </div>
   );
 }

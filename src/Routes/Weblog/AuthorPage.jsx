@@ -37,6 +37,7 @@ export default function AuthorPage() {
   }
 
   if (data) {
+    console.log(data)
     const { blogAuthor } = data.data[0];
     // extract the author data from its blogs (poor api :D)
 

@@ -21,6 +21,9 @@ import SelectServiceMenu from "./Components/templates/SelectServiceMenu.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AdminPanel from "./Routes/AdminPanel.jsx";
 
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import ManageWeblog from "./Components/templates/ManageWeblog.jsx";
+
 export const client = new ApolloClient({
   uri: "https://eu-central-1-shared-euc1-02.cdn.hygraph.com/content/cly1o521a058q07w4wsgza84t/master",
   cache: new InMemoryCache(),
@@ -44,6 +47,16 @@ const router = createBrowserRouter([
       {
         path: "/admin/panel",
         element: <AdminPanel />,
+        children: [
+          {
+            path: "manage-weblog",
+            element: <ManageWeblog />,
+          },
+          {
+            path: "manage-weblog/:page",
+            element: <ManageWeblog />,
+          },
+        ],
       },
       {
         path: "/admin",
@@ -106,6 +119,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ApolloProvider client={client}>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </ApolloProvider>
   </React.StrictMode>

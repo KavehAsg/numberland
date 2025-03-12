@@ -30,14 +30,6 @@ export default function CreateArticle() {
   function createBlogHandler(e) {
     e.preventDefault();
 
-    // if (editorRef.current) {
-    //   const editorContent = editorRef.current.getContent();
-    //   setArticleProperties({
-    //     ...articleProperties,
-    //     content: editorContent,
-    //   });
-    // }
-
     if (editorRef.current) {
       const editorContent = editorRef.current.getContent();
       setArticleProperties({
@@ -55,10 +47,6 @@ export default function CreateArticle() {
       console.log("done",data);
     }
   }
-
-//   useEffect(() => {
-//     console.log(articleProperties);
-//   }, [articleProperties]);
 
   if (isSmallScreen) {
     return (

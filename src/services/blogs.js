@@ -1,7 +1,7 @@
 import api, { apiFormData } from "../configs/axios";
 
-export async function getAllBlogs({pageNumber = 1 , limit = 9 }) {
-    const response = await api.get(`blog?limit=${limit}&pageNumber${pageNumber}`);
+export async function getAllBlogs({ pageNumber, limit }) {
+    const response = await api.get(`blog?limit=${limit}&pageNumber=${pageNumber}`);
     return response;
 }
 
@@ -21,7 +21,6 @@ export async function getBlogByCategory(categorySlug) {
 }
 
 export async function createBlog(blogData) {
-    // console.log(blogData);
     let formData = new FormData();
     formData.append('blogSlug', blogData.slug);
     formData.append('blogTitle', blogData.title);
@@ -32,5 +31,10 @@ export async function createBlog(blogData) {
     formData.append('file', blogData.image);
 
     const response = await apiFormData.post('blog', formData);
+    return response;
+}
+
+export async function deleteBlog(blogId) {
+    const response = await api.delete(`blog/${blogId}`);
     return response;
 }
