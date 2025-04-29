@@ -3,6 +3,7 @@ import { getCategories } from "../../services/getCategories";
 
 import LoadingSnippet from "./LoadingSnippet";
 import ErrorSnippet from "./ErrorSnippet";
+import { useEffect, useState } from "react";
 
 export default function SelectCategories({
   setArticleProperties,
@@ -11,26 +12,35 @@ export default function SelectCategories({
   const { isPending, isError, data, refetch, error } = useQuery({
     queryKey: ["getCategories"],
     queryFn: getCategories,
-    gcTime: 1 * 60 * 60 * 1000, // 1 hours
-    refetchOnMount: false,
+    gcTime: 0,
   });
 
   const handleCategories = (e) => {
-    if (e.target.checked && articleProperties.categories.length < 2) {
-      setArticleProperties({
-        ...articleProperties,
-        categories: [...articleProperties.categories, e.target.value],
-      });
-    } else if (!e.target.checked || articleProperties.categories.length >= 2) {
-      e.target.checked = false;
-      setArticleProperties({
-        ...articleProperties,
-        categories: articleProperties.categories.filter(
-          (cat) => cat !== e.target.value
+    const categoryId = String(e.target.value);
+    const isChecked = e.target.checked;
+
+    if (isChecked) {
+      if (articleProperties.categories.length < 2) {
+        setArticleProperties((prev) => ({
+          ...prev,
+          categories: [
+            ...prev.categories,
+            { blogCategoryId: categoryId, blogCategoryName: e.target.name },
+          ],
+        }));
+      } else {
+        e.target.checked = false;
+      }
+    } else {
+      setArticleProperties((prev) => ({
+        ...prev,
+        categories: prev.categories.filter(
+          (item) => item.blogCategoryId != categoryId
         ),
-      });
+      }));
     }
   };
+
 
   if (isPending)
     return <LoadingSnippet message={"در حال دریافت لیست موضوعات"} />;
@@ -61,7 +71,12 @@ export default function SelectCategories({
           >
             <input
               type="checkbox"
-              name="categories"
+              checked={
+                articleProperties.categories?.find(
+                  (item) => item.blogCategoryId == category.blogCategoryId
+                ) || false
+              }
+              name={category.blogCategoryName}
               value={category.blogCategoryId}
               onChange={handleCategories}
               className="radio radio-info"

@@ -19,10 +19,14 @@ import AuthorPage from "./Routes/Weblog/AuthorPage.jsx";
 import CategoryPage from "./Routes/Weblog/CategoryPage.jsx";
 import SelectServiceMenu from "./Components/templates/SelectServiceMenu.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import AdminPanel from "./Routes/AdminPanel.jsx";
+import AdminPanel from "./Routes/AdminPanel/AdminPanel.jsx";
 
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import ManageWeblog from "./Components/templates/ManageWeblog.jsx";
+
+
+import CreateBlog from "./Routes/AdminPanel/CreateBlog.jsx";
+import ManageWeblog from "./Routes/AdminPanel/ManageWeblog.jsx";
+import EditBlog from "./Routes/AdminPanel/EditBlog.jsx";
 
 export const client = new ApolloClient({
   uri: "https://eu-central-1-shared-euc1-02.cdn.hygraph.com/content/cly1o521a058q07w4wsgza84t/master",
@@ -56,6 +60,13 @@ const router = createBrowserRouter([
             path: "manage-weblog/:page",
             element: <ManageWeblog />,
           },
+          {
+            path : "create-article",
+            element : <CreateBlog />
+          },{
+            path : "edit-blog/:slug",
+            element : <EditBlog />
+          }
         ],
       },
       {

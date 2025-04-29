@@ -224,6 +224,15 @@
     opacity: 0;
     pointer-events: none;
   }
+
+  .modal-box::-webkit-scrollbar-button {
+    color: #eba132;
+    background-color: #f4f7fb;
+ }
+
+  /* Firefox */
+  
+
 }
 
 @layer base {

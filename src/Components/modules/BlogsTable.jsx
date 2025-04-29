@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import DateSnippet from "../Weblog/DateSnippet";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteBlog } from "../../services/blogs";
+import Modal from "../templates/Modal";
+import EditBlog from "../../Routes/AdminPanel/EditBlog";
+import { Link } from "react-router-dom";
 
 export default function BlogsTable({ data }) {
+  const [clickedBlogSlug, setClickedBlogSlug] = useState("");
+
   const queryClient = useQueryClient();
 
   const deleteMutation = useMutation({
@@ -26,7 +31,7 @@ export default function BlogsTable({ data }) {
   };
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-aut w-full">
       <table className="table">
         {/* head */}
         <thead>
@@ -73,7 +78,9 @@ export default function BlogsTable({ data }) {
               </td>
 
               <th>
-                <button className="btn btn-ghost btn-xs pt-1">ویرایش</button>
+                <Link to={`/admin/panel/edit-blog/${blog.blogSlug}`}>
+                  <button className="btn btn-ghost btn-xs pt-1">ویرایش</button>
+                </Link>
               </th>
               <th>
                 <button

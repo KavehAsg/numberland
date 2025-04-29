@@ -1,14 +1,23 @@
 import { Editor } from "@tinymce/tinymce-react";
 
-
-export default function RichTextEditor({initialContent = "" , editorRef}) {
+export default function RichTextEditor({
+  editorRef,
+  articleData,
+}) {
+  const [articleProperties, setArticleProperties] = articleData;
 
   return (
     <>
       <Editor
         apiKey={import.meta.env.VITE_EDITOR_API_KEY}
         onInit={(_evt, editor) => (editorRef.current = editor)}
-        initialValue={initialContent}
+        initialValue={articleProperties.content}
+        onEditorChange={(newContent) =>
+          setArticleProperties({
+            ...articleProperties,
+            content: newContent,
+          })
+        }
         init={{
           height: 700,
           menubar: true,

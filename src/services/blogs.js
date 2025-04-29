@@ -27,14 +27,31 @@ export async function createBlog(blogData) {
     formData.append('blogContent', blogData.content);
     formData.append('blogPreview', blogData.preview);
     formData.append('blogAuthorId', 1);
-    formData.append('blogCategories', 1);
+    blogData.categories.forEach((category) => {
+        formData.append('blogCategories', category.blogCategoryId);
+    });
     formData.append('file', blogData.image);
 
     const response = await apiFormData.post('blog', formData);
+    console.log(response)
     return response;
 }
 
 export async function deleteBlog(blogId) {
     const response = await api.delete(`blog/${blogId}`);
     return response;
+}
+
+export async function updateBlog(blogId, blogData) {
+    console.log()
+    const updatedJsonPatch = [];
+    for (const key in blogData) {
+        updatedJsonPatch.push({
+            op: "replace",
+            path: `/${key}`,
+            value: blogData[key],
+        })
+    };
+
+    console.log(updatedJsonPatch)
 }

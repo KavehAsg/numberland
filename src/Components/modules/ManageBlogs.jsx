@@ -1,6 +1,5 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
-import { deleteBlog, getAllBlogs } from "../../services/blogs";
+import { useQuery } from "@tanstack/react-query";
+import { getAllBlogs } from "../../services/blogs";
 import LoadingSnippet from "./LoadingSnippet";
 import ErrorPage from "../templates/ErrorPage";
 import { useParams } from "react-router-dom";
